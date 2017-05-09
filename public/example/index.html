@@ -1,0 +1,139 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>Hírkereső</title>
+    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="description" content="FILL THIS OUT">
+
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
+
+    <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+        /* any custom style goes here */
+        body {
+            background-color: #D9D9D9;
+        }
+        header {
+            background-color: #4484CE;
+            max-width: 900px;
+        }
+        amp-list {
+            background-color: #4484CE;;
+            color: #000;
+        }
+        .feed-container {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+        }
+
+        .feed-wrapper {
+            width: 300px;
+        }
+        .feed-item {
+            width: 100%;
+        }
+
+        .feed-item-title{
+            padding-left: .4em;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: black;
+        }
+        .feed-item-title:hover{
+            padding-left: .4em;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: darkslategray;
+        }
+
+        .feed-list-header-container {
+            background-color: #F19F4D;
+        }
+        @media (min-width: 600px) {
+            .feed-item {
+                width: 50%;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .feed-item {
+                width: 33%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <header class="site-header">
+        <h1>Hírek</h1>
+        <nav class="site-navigation">
+            <ul class="nav-list">
+                <li class="category"><a href="#">Főoldal</a></li>
+                <li class="category"><a href="#">Belföld</a></li>
+                <li class="category"><a href="#">Külföld</a></li>
+                <li class="category"><a href="#">Bulvár</a></li>
+                <li class="category"><a href="#">Sport</a></li>
+                <li class="category"><a href="#">Technológia</a></li>
+            </ul>
+
+        </nav>
+    </header>
+    <main>
+        <div class="feed-container">
+            <div class="feed-item">
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <span class="feed-list-header">Feed 1</span>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="400"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div>
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps">
+                                Show more
+                            </div>
+                        </amp-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        some footer
+    </footer>
+</div>
+</body>
+</html>
