@@ -1,16 +1,16 @@
 extends layout
 
 block content
-  main
+    main
     .feed-container
-      .feed-item
-        .feed-wrapper
-          .feed-list-header-container
-            span.feed-list-header Feed 1
-          .feed-list
-            amp-list.m1(height='400', layout='fixed-height', src='https://ampbyexample.com/json/examples.json')
-              template#amp-template-id(type='amp-mustache')
-                div
-                  a.feed-item-title(href='{{url}}') {{title}}
-              .list-overflow.ampstart-btn.caps(overflow='', role='button', aria-label='Show more')  Show more
-
+      each feed in feedlist
+        .feed-item
+          .feed-wrapper
+            .feed-list-header-container
+              span.feed-list-header #{feed.title}
+            .feed-list
+              amp-list.m1(height='400', layout='fixed-height', src='/v0/api/feeds/' + feed.title)
+                template#amp-template-id(type='amp-mustache')
+                  div
+                    a.feed-item-title(href="{{url}}") {{title}}
+                .list-overflow.ampstart-btn.caps(overflow='', role='button', aria-label='Még több ' + feed.title + ' hír')  Show more

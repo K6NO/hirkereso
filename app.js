@@ -5,9 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-
 var app = express();
+var cors = require('cors');
+
+//TODO check CORS headers
+var corsOptions = {
+  origin : true,
+  methods : 'GET',
+  optionsSuccessStatus : 200,
+  exposedHeaders : "AMP-Access-Control-Allow-Source-Origin",
+}
+
+var index = require('./routes/index');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//app.use(cors(corsOptions));
 app.use('/', index);
 
 // catch 404 and forward to error handler

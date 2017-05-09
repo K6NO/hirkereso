@@ -31,3 +31,8 @@ npm-debug.log
 
 # IntellJ
 .idea/
+
+notes.txt
+mockdata/
+public/mock
+
