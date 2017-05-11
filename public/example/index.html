@@ -33,15 +33,33 @@
         body {
             background-color: #D9D9D9;
         }
+
+        .container {
+            width : 90%;
+            text-align: center;
+        }
         header {
+            position: inline-block;
             background-color: #4484CE;
             max-width: 900px;
+            height: 120px;
+            margin: 0 auto;
+            padding: 20px;
+            /*position: relative;*/
+        }
+        main {
+
+        }
+        .nav-row {
+
         }
         amp-list {
             background-color: #4484CE;;
             color: #000;
         }
         .feed-container {
+            position: inline-block;
+            margin: 0 auto;
             display: -webkit-flex;
             display: flex;
             -webkit-flex-flow: row wrap;
@@ -88,18 +106,22 @@
 <body>
 <div id="container">
     <header class="site-header">
-        <h1>Hírek</h1>
-        <nav class="site-navigation">
-            <ul class="nav-list">
-                <li class="category"><a href="#">Főoldal</a></li>
-                <li class="category"><a href="#">Belföld</a></li>
-                <li class="category"><a href="#">Külföld</a></li>
-                <li class="category"><a href="#">Bulvár</a></li>
-                <li class="category"><a href="#">Sport</a></li>
-                <li class="category"><a href="#">Technológia</a></li>
-            </ul>
+        <div class="title-row">
+            <h1>Hírek</h1>
+        </div>
+        <div class="nav-row">
+            <nav class="site-navigation">
+                <ul class="nav-list">
+                    <li class="category"><a href="#">Főoldal</a></li>
+                    <li class="category"><a href="#">Belföld</a></li>
+                    <li class="category"><a href="#">Külföld</a></li>
+                    <li class="category"><a href="#">Bulvár</a></li>
+                    <li class="category"><a href="#">Sport</a></li>
+                    <li class="category"><a href="#">Technológia</a></li>
+                </ul>
 
-        </nav>
+            </nav>
+        </div>
     </header>
     <main>
         <div class="feed-container">

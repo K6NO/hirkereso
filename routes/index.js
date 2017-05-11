@@ -13,10 +13,11 @@ var mockFeeds = {
 var cors = require('cors');
 var corsOptions = {
   origin : true,
-  methods : 'GET',
+  methods : 'GET, OPTIONS, POST',
   optionsSuccessStatus : 200,
+  allowedHeaders : "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token",
   exposedHeaders : "AMP-Access-Control-Allow-Source-Origin",
-}
+};
 
 
 /* GET home page. */
@@ -36,14 +37,14 @@ router.get('/:category', function(req, res, next) {
 
 /* API . */
 /*TODO set up cors !
-* https://www.npmjs.com/package/cors
 * */
 router.get('/v0/api/feeds/:feedname', cors(corsOptions), function(req, res, next) {
+  console.log(req.headers);
   if(req.headers['amp-same-origin']){
     var feed = mockFeeds[req.params.feedname];
-    console.log(req.params.feedname);
+    //console.log(req.params.feedname);
     res.json(feed);
-    console.log(feed);
+    //console.log(feed);
   }
 });
 

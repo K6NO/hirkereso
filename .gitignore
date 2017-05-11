@@ -35,4 +35,8 @@ npm-debug.log
 notes.txt
 mockdata/
 public/mock
+server.crt
+server.csr
+server.enc.key
+server.key
 
