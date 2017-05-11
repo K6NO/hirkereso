@@ -3,7 +3,6 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-var feedList = require('../mockdata/feedlist.json').items;
 var mockIndexFeed = require('../mockdata/mock_index.json');
 var mockHvgFeed = require('../mockdata/mock_hvg.json');
 
@@ -19,17 +18,18 @@ var cachedFeeds = {
 
 // Refreshes the list of feed - used to display boxes on UI
 function refreshFeedList(){
+    var feedList = require('../mockdata/feedlist.json').items;
     var feedListCache = {};
     feedList.map(function (feed) {
         var key = feed.title.toLowerCase();
-        console.log(key);
         feedListCache[key] = feed;
     });
-    return (feedListCache);
+    return feedListCache;
 }
 
 
 // make a promise version of readFile
+// readfile should return data parsed as JSON
 function readFileASync(feedName) {
     return new Promise(function(resolve, reject) {
         fs.readFile(__dirname + '/../mockdata/mock_' + feedName + '.json', 'utf8', function(err, data){
@@ -37,10 +37,8 @@ function readFileASync(feedName) {
                 console.log('in reject');
                 reject(err);
             }
-            else {
-                console.log('readfile completed');
-                resolve(data);
-            }
+            console.log('readfile completed: ' + feedName);
+            resolve(JSON.parse(data));
         });
     });
 }
@@ -53,13 +51,11 @@ function getCachedFeed(feedName){
 // refreshes cached feed
 function getFreshFeed(feedName){
     return readFileASync(feedName).then(function (data) {
-        console.log('readFileSync resolves');
-        cachedFeeds[feedName] = data;
-        console.log(data);
-        console.log('mockFeeds[' + feedName + ']');
-        console.log(cachedFeeds[feedName]);
+        console.log('readFileASync resolves: ' + feedName);
+        cachedFeeds['index'] = data;
+        return data;
     }).catch(function (err) {
-        console.log('readFileSync rejected')
+        console.log('readFileSync rejected');
         console.log(err);
     })
 }
@@ -72,4 +68,4 @@ function getFreshFeedPromise(feedName){
 module.exports.getCachedFeed = getCachedFeed;
 module.exports.getFreshFeed = getFreshFeed;
 module.exports.getFreshFeedPromise = getFreshFeedPromise;
-module.exports.refreshFeedList = refreshFeedList;
+module.exports.getFeedList = refreshFeedList;
