@@ -2,11 +2,10 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var cron = require('node-cron');
 
 var mockIndexFeed = require('../mockdata/mock_index.json');
 var mockHvgFeed = require('../mockdata/mock_hvg.json');
-
-
 
 var cachedFeeds = {
     index : mockIndexFeed,
@@ -21,6 +20,14 @@ var cachedFeeds = {
 function getFeedList(category){
     var feedList = require('../mockdata/feedlist.json').items;
     var feedListCache = {};
+
+    //TODO separate cron task
+    var task = cron.schedule('*/5 * * * * *', function () {
+        let feed = getFreshFeed('index');
+        console.log(feed);
+        console.log('in 5 sec');
+    })
+
     if(category === undefined){
         feedList.map(function (feed) {
             var key = feed.title.toLowerCase();
@@ -40,8 +47,9 @@ function getFeedList(category){
 }
 
 
+
 // make a promise version of readFile
-// readfile should return data parsed as JSON
+// readFile should return data parsed as JSON -> resolve(JSON.parse(data))
 function readFileASync(feedName) {
     return new Promise(function(resolve, reject) {
         fs.readFile(__dirname + '/../mockdata/mock_' + feedName + '.json', 'utf8', function(err, data){
@@ -59,6 +67,8 @@ function readFileASync(feedName) {
 function getCachedFeed(feedName){
     return cachedFeeds[feedName];
 }
+
+
 
 // refreshes cached feed
 function getFreshFeed(feedName){
