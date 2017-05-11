@@ -16,14 +16,26 @@ var cachedFeeds = {
 };
 
 
-// Refreshes the list of feed - used to display boxes on UI
-function refreshFeedList(){
+// Refreshes the list of feeds - used to display boxes on UI
+//
+function getFeedList(category){
     var feedList = require('../mockdata/feedlist.json').items;
     var feedListCache = {};
-    feedList.map(function (feed) {
-        var key = feed.title.toLowerCase();
-        feedListCache[key] = feed;
-    });
+    if(category === undefined){
+        feedList.map(function (feed) {
+            var key = feed.title.toLowerCase();
+            feedListCache[key] = feed;
+        });
+    } else {
+        feedList.map(function (feed) {
+            console.log('yaaaay')
+            var key = feed.title.toLowerCase();
+            var feedCategory = feed.category;
+            if (feedCategory.indexOf(category) !== -1){
+                feedListCache[key] = feed;
+            }
+        });
+    }
     return feedListCache;
 }
 
@@ -68,4 +80,4 @@ function getFreshFeedPromise(feedName){
 module.exports.getCachedFeed = getCachedFeed;
 module.exports.getFreshFeed = getFreshFeed;
 module.exports.getFreshFeedPromise = getFreshFeedPromise;
-module.exports.getFeedList = refreshFeedList;
+module.exports.getFeedList = getFeedList;

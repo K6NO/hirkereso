@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 /* GET categories. */
 router.get('/:category', function(req, res, next) {
-  console.log(req.params.category);
+  var feedList = feedService.getFeedList(req.params.category);
   res.render('index', {
     feedlist : feedList
   });
