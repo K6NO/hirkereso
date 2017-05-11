@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var feedList = require('../mockdata/feedlist.json').items;
-var mockIndexFeed = require('../mockdata/mock_index.json');
-var mockHvgFeed = require('../mockdata/mock_hvg.json');
+var feedService = require('../src/feedservice.js');
 
-var mockFeeds = {
-  index : mockIndexFeed,
-  hvg : mockHvgFeed
-};
+var feedList = require('../mockdata/feedlist.json').items;
 
 var cors = require('cors');
 var corsOptions = {
@@ -18,7 +13,6 @@ var corsOptions = {
   allowedHeaders : "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token",
   exposedHeaders : "AMP-Access-Control-Allow-Source-Origin",
 };
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -41,7 +35,9 @@ router.get('/:category', function(req, res, next) {
 router.get('/v0/api/feeds/:feedname', cors(corsOptions), function(req, res, next) {
   console.log(req.headers);
   if(req.headers['amp-same-origin']){
-    var feed = mockFeeds[req.params.feedname];
+    var feed = feedService.getCachedFeed(req.params.feedname.toLowerCase());
+
+    //var feed = getCachedFeed(req.params.feedname.toLowerCase());
     //console.log(req.params.feedname);
     res.json(feed);
     //console.log(feed);
