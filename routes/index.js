@@ -33,21 +33,21 @@ router.get('/:category', function(req, res, next) {
 /*TODO set up cors !
 * */
 router.get('/v0/api/feeds/:feedname', cors(corsOptions), function(req, res, next) {
-  console.log(req.headers);
   if(req.headers['amp-same-origin']){
     var feed = feedService.getCachedFeed(req.params.feedname.toLowerCase());
-
-    //var feed = getCachedFeed(req.params.feedname.toLowerCase());
-    //console.log(req.params.feedname);
     res.json(feed);
-    //console.log(feed);
   }
 });
 
 router.get('/apitest/:feedname', function(req, res, next) {
-
-  var feed = mockFeeds[req.params.feedname];
-  res.json(feed);
+  //TODO - not needed now, but investigate why async GET returns string with \n chars
+  feedService.getFreshFeedPromise('index')
+      .then(function (data) {
+        console.log(res.json(data));
+        res.json(data);
+  }).catch(function (err) {
+    console.log(err);
+  });
 });
 
 module.exports = router;
