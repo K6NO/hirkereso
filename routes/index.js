@@ -3,7 +3,7 @@ var router = express.Router();
 
 var feedService = require('../src/feedservice.js');
 
-var feedList = require('../mockdata/feedlist.json').items;
+//var feedList = require('../mockdata/feedlist.json').items;
 
 var cors = require('cors');
 var corsOptions = {
@@ -16,6 +16,7 @@ var corsOptions = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var feedList = feedService.refreshFeedList();
   res.render('index', {
     feedlist : feedList
   });
@@ -48,6 +49,23 @@ router.get('/apitest/:feedname', function(req, res, next) {
   }).catch(function (err) {
     console.log(err);
   });
+});
+
+router.get('/freshfeed/:feedname', function(req, res, next) {
+  //TODO - not needed now, but investigate why async GET returns string with \n chars
+  feedService.getFreshFeedPromise(req.params.feedname)
+      .then(function (feed) {
+        res.json(feed);
+      }).catch(function (err) {
+    console.log('Error when resolving feed promise in router ' + err);
+  });;
+
+    //  .then(function (data) {
+    //    console.log(res.json(data));
+    //    res.json(data);
+    //  }).catch(function (err) {
+    //console.log(err);
+  //});
 });
 
 module.exports = router;
