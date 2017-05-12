@@ -44,7 +44,7 @@ router.get('/freshfeed/:feedname', function(req, res, next) {
         res.json(feed);
       }).catch(function (err) {
     console.log('Error when resolving feed promise in router ' + err);
-  });;
+  });
 });
 
 module.exports = router;

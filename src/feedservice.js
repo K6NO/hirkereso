@@ -21,13 +21,6 @@ function getFeedList(category){
     var feedList = require('../mockdata/feedlist.json').items;
     var feedListCache = {};
 
-    //TODO separate cron task
-    var task = cron.schedule('*/5 * * * * *', function () {
-        let feed = getFreshFeed('index');
-        console.log(feed);
-        console.log('in 5 sec');
-    })
-
     if(category === undefined){
         feedList.map(function (feed) {
             var key = feed.title.toLowerCase();
