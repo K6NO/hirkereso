@@ -7,6 +7,9 @@ var cron = require('node-cron');
 var mockIndexFeed = require('../mockdata/mock_index.json');
 var mockHvgFeed = require('../mockdata/mock_hvg.json');
 
+var feedList = require('../mockdata/mock_feedlist.json').items;
+
+
 var cachedFeeds = {
     index : mockIndexFeed,
     hvg : mockHvgFeed,
@@ -16,30 +19,27 @@ var cachedFeeds = {
 
 
 // Refreshes the list of feeds - used to display boxes on UI
-//
+// Checks if feed belongs to a category
 function getFeedList(category){
-    var feedList = require('../mockdata/feedlist.json').items;
     var feedListCache = {};
-
-    if(category === undefined){
-        feedList.map(function (feed) {
-            var key = feed.title.toLowerCase();
-            feedListCache[key] = feed;
-        });
-    } else {
-        feedList.map(function (feed) {
-            console.log('yaaaay')
-            var key = feed.title.toLowerCase();
-            var feedCategory = feed.category;
-            if (feedCategory.indexOf(category) !== -1){
+    console.log('cat: ' + category);
+        if(category === undefined){
+            console.log('getFeedlist, category undefined' );
+            feedList.map(function (feed) {
+                var key = feed.title.toLowerCase();
                 feedListCache[key] = feed;
-            }
-        });
-    }
-    return feedListCache;
+            });
+        } else {
+            feedList.map(function (feed) {
+                var key = feed.title.toLowerCase();
+                var feedCategory = feed.category;
+                if (feedCategory.indexOf(category) !== -1){
+                    feedListCache[key] = feed;
+                }
+            });
+        }
+        return feedListCache;
 }
-
-
 
 // make a promise version of readFile
 // readFile should return data parsed as JSON -> resolve(JSON.parse(data))
@@ -47,7 +47,7 @@ function readFileASync(feedName) {
     return new Promise(function(resolve, reject) {
         fs.readFile(__dirname + '/../mockdata/mock_' + feedName + '.json', 'utf8', function(err, data){
             if (err) {
-                console.log('in reject');
+                console.log('Readfile rejected with parameter: ' + feedName);
                 reject(err);
             }
             console.log('readfile completed: ' + feedName);
