@@ -6,6 +6,9 @@ var cron = require('node-cron');
 
 var mockIndexFeed = require('../mockdata/mock_index.json');
 var mockHvgFeed = require('../mockdata/mock_hvg.json');
+var mockOrigoFeed  =require('../mockdata/mock_origo.json');
+var mock444Feed  =require('../mockdata/mock_444.json');
+
 
 var feedList = require('../mockdata/mock_feedlist.json').items;
 
@@ -13,8 +16,11 @@ var feedList = require('../mockdata/mock_feedlist.json').items;
 var cachedFeeds = {
     index : mockIndexFeed,
     hvg : mockHvgFeed,
-    origo : mockIndexFeed,
-    444 : mockHvgFeed
+    origo : mockOrigoFeed,
+    444 : mock444Feed,
+    sztarklikk : mockIndexFeed,
+    atv : mockHvgFeed,
+    vs : mockOrigoFeed,
 };
 
 
