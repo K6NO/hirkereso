@@ -5,8 +5,14 @@ const FeedParser = require('feedparser');
 
 const request = require('request'); // for fetching the feed
 
-const req = request('http://www.origo.hu/contentpartner/rss/hircentrum/origo.xml');
-const feedparser = new FeedParser();
+// Index http://index.hu/24ora/rss/
+// Origo http://www.origo.hu/contentpartner/rss/hircentrum/origo.xml
+const options = {
+    addmeta : false,
+    resume_saxerror: false
+}
+const req = request('http://index.hu/24ora/rss/');
+var feedparser = new FeedParser(options);
 
 
 req.on('error', function (error) {
@@ -19,6 +25,7 @@ req.on('response', function (res) {
         this.emit('error', new Error('Bad status code'));
     }
     else {
+        console.log('before pipe');
         stream.pipe(feedparser);
     }
 });
@@ -33,16 +40,11 @@ feedparser.on('readable', function () {
     var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
     var data = stream.read();
     //console.log(item);
-
-    for (let title in data){
-        console.log('____________');
-        console.log(data[title]);
-
-    }
-    //while (item = stream.read()) {
-    //    console.log(item);
-    //}
-    console.log('Meta: ' + meta);
+    //console.log(meta);
+    JSON.stringify(data);
+    JSON.parse(data);
+    console.dir(data);
+    //missing [ ] in JSON
 });
 
 

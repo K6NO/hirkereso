@@ -61,8 +61,6 @@ function getCachedFeed(feedName){
     return cachedFeeds[feedName];
 }
 
-
-
 // refreshes cached feed
 function getFreshFeed(feedName){
     return readFileASync(feedName).then(function (data) {

@@ -1,16 +1,24 @@
-header.site-header
-  h1 Hírek
-  nav.site-navigation
-    ul.nav-list
-      li.category
-        a(href='/fooldal') Főoldal
-      li.category
-        a(href='/belfold') Belföld
-      li.category
-        a(href='/kulfold') Külföld
-      li.category
-        a(href='/bulvar') Bulvár
-      li.category
-        a(href='/sport') Sport
-      li.category
-        a(href='/tech') Tech
+.header-container
+        header.site-header
+          .title-row
+            h1 Hírek
+          .nav-row
+            nav
+              ul
+                li.category
+                  a(href='/') Főoldal
+                li.category
+                  a(href='/belfold')
+                    h2 Belföld
+                li.category
+                  a(href='kulfold')
+                    h2 Külföld
+                li.category
+                  a(href='bulvar')
+                    h2 Bulvár
+                li.category
+                  a(href='sport')
+                    h2 Sport
+                li.category
+                  a(href='tech')
+                    h2 Tech
