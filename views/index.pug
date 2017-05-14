@@ -12,5 +12,5 @@ block content
                     template#amp-template-id(type='amp-mustache')
                       .feed-item
                         a.feed-item-title(href='{{url}}') {{title}}
-                    .list-overflow.ampstart-btn.caps(overflow='', role='button', aria-label='Még több ' + feed.title + ' hír')
-                      | Show more
+                    .list-overflow(overflow='', role='button', aria-label='Show more')
+                      | Még több #{feed.title} hír

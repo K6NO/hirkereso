@@ -164,6 +164,9 @@
             color: darkslategray;
         }
 
+        .of {
+            background-color: #062F4F;
+        }
         .footer-container {
             background-color: #008F95; /*aqua*/
         }
@@ -233,29 +236,29 @@
     <main>
         <div class="feed-container">
             <div class="feed-wrapper">
-                    <div class="feed-list-header-container">
-                        <h3 class="feed-list-header">Index</h3>
-                    </div>
-                    <div class="feed-list">
-                        <amp-list height="400"
-                                  layout="fixed-height"
-                                  src="https://ampbyexample.com/json/examples.json"
-                                  class="m1">
-                            <template type="amp-mustache"
-                                      id="amp-template-id">
-                                <div class="feed-item">
-                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
-                                </div>
-                            </template>
-                            <div overflow
-                                 role="button"
-                                 aria-label="Show more"
-                                 class="list-overflow ampstart-btn caps">
-                                Show more
-                            </div>
-                        </amp-list>
-                    </div>
+                <div class="feed-list-header-container">
+                    <h3 class="feed-list-header">Index</h3>
                 </div>
+                <div class="feed-list">
+                    <amp-list height="400"
+                              layout="fixed-height"
+                              src="https://ampbyexample.com/json/examples.json"
+                              class="m1">
+                        <template type="amp-mustache"
+                                  id="amp-template-id">
+                            <div class="feed-item">
+                                <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                            </div>
+                        </template>
+                        <div overflow
+                             role="button"
+                             aria-label="Show more"
+                             class="list-overflow ampstart-btn caps of">
+                            Show more
+                        </div>
+                    </amp-list>
+                </div>
+            </div>
             <div class="feed-wrapper">
                 <div class="feed-list-header-container">
                     <h3 class="feed-list-header">Index</h3>
