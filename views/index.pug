@@ -3,14 +3,39 @@ extends layout
 block content
     main
         .feed-container
-          each feed in feedlist
+          .col
+            each feed in feedlist
               .feed-wrapper
                 .feed-list-header-container
                   h3.feed-list-header #{feed.title}
                 .feed-list
-                  amp-list.m1(height='400', layout='fixed-height', src='/v0/api/feeds/' + feed.title)
+                  amp-list(height='350', layout='fixed-height', src='/v0/api/feeds/' + feed.title)
                     template#amp-template-id(type='amp-mustache')
                       .feed-item
                         a.feed-item-title(href='{{url}}') {{title}}
-                    .list-overflow(overflow='', role='button', aria-label='Show more')
-                      | Még több #{feed.title} hír
+                    .list-overflow(overflow='', aria-label='Show more')
+                      | További #{feed.title} hírek
+          .col
+                      each feed in feedlist
+                        .feed-wrapper
+                          .feed-list-header-container
+                            h3.feed-list-header #{feed.title}
+                          .feed-list
+                            amp-list(height='350', width='310', layout='fixed', src='/v0/api/feeds/' + feed.title)
+                              template#amp-template-id(type='amp-mustache')
+                                .feed-item
+                                  a.feed-item-title(href='{{url}}') {{title}}
+                              .list-overflow(overflow='', aria-label='Show more')
+                                | További #{feed.title} hírek
+          .col
+                      each feed in feedlist
+                        .feed-wrapper
+                          .feed-list-header-container
+                            h3.feed-list-header #{feed.title}
+                          .feed-list
+                            amp-list(height='350', width='310', layout='fixed', src='/v0/api/feeds/' + feed.title)
+                              template#amp-template-id(type='amp-mustache')
+                                .feed-item
+                                  a.feed-item-title(href='{{url}}') {{title}}
+                              .list-overflow(overflow='', aria-label='Show more')
+                                | További #{feed.title} hírek

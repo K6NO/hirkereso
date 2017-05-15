@@ -15,6 +15,7 @@ var corsOptions = {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   let feedList = feedService.getFeedList();
+  console.log(Object.keys(feedList).length);
   res.render('index', {
     feedlist : feedList
   });

@@ -109,6 +109,9 @@
             justify-content: space-around;
         }
 
+        .col {
+            width: 310px;
+        }
         .feed-wrapper {
             margin-top: 10px;
             margin-bottom: 10px;
@@ -235,31 +238,156 @@
 
     <main>
         <div class="feed-container">
-            <div class="feed-wrapper">
-                <div class="feed-list-header-container">
-                    <h3 class="feed-list-header">Index</h3>
-                </div>
-                <div class="feed-list">
-                    <amp-list height="400"
-                              layout="fixed-height"
-                              src="https://ampbyexample.com/json/examples.json"
-                              class="m1">
-                        <template type="amp-mustache"
-                                  id="amp-template-id">
-                            <div class="feed-item">
-                                <a class="feed-item-title" href="{{url}}">{{title}}</a>
+            <div class="col">
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <h3 class="feed-list-header">Index</h3>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="300"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div class="feed-item">
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps of">
+                                Show more
                             </div>
-                        </template>
-                        <div overflow
-                             role="button"
-                             aria-label="Show more"
-                             class="list-overflow ampstart-btn caps of">
-                            Show more
-                        </div>
-                    </amp-list>
+                        </amp-list>
+                    </div>
+                </div>
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <h3 class="feed-list-header">Index</h3>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="400"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div class="feed-item">
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps">
+                                Show more
+                            </div>
+                        </amp-list>
+                    </div>
+                </div>
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <h3 class="feed-list-header">Index</h3>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="300"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div class="feed-item">
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps">
+                                Show more
+                            </div>
+                        </amp-list>
+                    </div>
                 </div>
             </div>
-            <div class="feed-wrapper">
+            <div class="col">
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <h3 class="feed-list-header">Index</h3>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="400"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div class="feed-item">
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps">
+                                Show more
+                            </div>
+                        </amp-list>
+                    </div>
+                </div>
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <h3 class="feed-list-header">Index</h3>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="400"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div class="feed-item">
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps">
+                                Show more
+                            </div>
+                        </amp-list>
+                    </div>
+                </div>
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <h3 class="feed-list-header">Index</h3>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="400"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div class="feed-item">
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps">
+                                Show more
+                            </div>
+                        </amp-list>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="feed-wrapper">
                 <div class="feed-list-header-container">
                     <h3 class="feed-list-header">Index</h3>
                 </div>
@@ -283,102 +411,57 @@
                     </amp-list>
                 </div>
             </div>
-            <div class="feed-wrapper">
-                <div class="feed-list-header-container">
-                    <h3 class="feed-list-header">Index</h3>
-                </div>
-                <div class="feed-list">
-                    <amp-list height="400"
-                              layout="fixed-height"
-                              src="https://ampbyexample.com/json/examples.json"
-                              class="m1">
-                        <template type="amp-mustache"
-                                  id="amp-template-id">
-                            <div class="feed-item">
-                                <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <h3 class="feed-list-header">Index</h3>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="400"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div class="feed-item">
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps">
+                                Show more
                             </div>
-                        </template>
-                        <div overflow
-                             role="button"
-                             aria-label="Show more"
-                             class="list-overflow ampstart-btn caps">
-                            Show more
-                        </div>
-                    </amp-list>
+                        </amp-list>
+                    </div>
+                </div>
+                <div class="feed-wrapper">
+                    <div class="feed-list-header-container">
+                        <h3 class="feed-list-header">Index</h3>
+                    </div>
+                    <div class="feed-list">
+                        <amp-list height="400"
+                                  layout="fixed-height"
+                                  src="https://ampbyexample.com/json/examples.json"
+                                  class="m1">
+                            <template type="amp-mustache"
+                                      id="amp-template-id">
+                                <div class="feed-item">
+                                    <a class="feed-item-title" href="{{url}}">{{title}}</a>
+                                </div>
+                            </template>
+                            <div overflow
+                                 role="button"
+                                 aria-label="Show more"
+                                 class="list-overflow ampstart-btn caps">
+                                Show more
+                            </div>
+                        </amp-list>
+                    </div>
                 </div>
             </div>
-            <div class="feed-wrapper">
-                <div class="feed-list-header-container">
-                    <h3 class="feed-list-header">Index</h3>
-                </div>
-                <div class="feed-list">
-                    <amp-list height="400"
-                              layout="fixed-height"
-                              src="https://ampbyexample.com/json/examples.json"
-                              class="m1">
-                        <template type="amp-mustache"
-                                  id="amp-template-id">
-                            <div class="feed-item">
-                                <a class="feed-item-title" href="{{url}}">{{title}}</a>
-                            </div>
-                        </template>
-                        <div overflow
-                             role="button"
-                             aria-label="Show more"
-                             class="list-overflow ampstart-btn caps">
-                            Show more
-                        </div>
-                    </amp-list>
-                </div>
-            </div>
-            <div class="feed-wrapper">
-                <div class="feed-list-header-container">
-                    <h3 class="feed-list-header">Index</h3>
-                </div>
-                <div class="feed-list">
-                    <amp-list height="400"
-                              layout="fixed-height"
-                              src="https://ampbyexample.com/json/examples.json"
-                              class="m1">
-                        <template type="amp-mustache"
-                                  id="amp-template-id">
-                            <div class="feed-item">
-                                <a class="feed-item-title" href="{{url}}">{{title}}</a>
-                            </div>
-                        </template>
-                        <div overflow
-                             role="button"
-                             aria-label="Show more"
-                             class="list-overflow ampstart-btn caps">
-                            Show more
-                        </div>
-                    </amp-list>
-                </div>
-            </div>
-            <div class="feed-wrapper">
-                <div class="feed-list-header-container">
-                    <h3 class="feed-list-header">Index</h3>
-                </div>
-                <div class="feed-list">
-                    <amp-list height="400"
-                              layout="fixed-height"
-                              src="https://ampbyexample.com/json/examples.json"
-                              class="m1">
-                        <template type="amp-mustache"
-                                  id="amp-template-id">
-                            <div class="feed-item">
-                                <a class="feed-item-title" href="{{url}}">{{title}}</a>
-                            </div>
-                        </template>
-                        <div overflow
-                             role="button"
-                             aria-label="Show more"
-                             class="list-overflow ampstart-btn caps">
-                            Show more
-                        </div>
-                    </amp-list>
-                </div>
-            </div>
+
+
         </div>
     </main>
     <div class="footer-container">

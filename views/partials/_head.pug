@@ -95,19 +95,19 @@ head
       flex-flow: row wrap;
       justify-content: space-around;
       }
+      .col {
+      width: 310px;
+      }
       .feed-wrapper {
       margin-top: 10px;
       margin-bottom: 10px;
-      width: 310px;
       border-radius: 5px;
       }
-      .feed-list{
-      }
+
       .feed-list-header-container {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       background-color: #E24E42; /*papaya*/
-      box-shadow: 2px 2px 1px #888888;
       }
       .feed-list-header {
       margin: 0;
@@ -118,11 +118,7 @@ head
       text-shadow: 2px 2px 2px black;
       border-bottom: 1px solid black;
       }
-      .feed-list {
-      box-shadow: 2px 2px 1px #888888;
-      }
-      amp-list {
-      background-color: #008F95; /*aqua*/
+      .m1 {
       }
       .feed-item-title {
       font-size: 1.1em;
@@ -132,19 +128,27 @@ head
       .feed-item {
       background-color: #062F4F; /*ink*/
       border-bottom: 1px solid #4484CE; /*aqua*/
-      padding: .2em 0 .2em .4em;
-      border-radius: 5px;
+      padding: .2em .1em .2em .4em;
+      border-radius: 3px;
       }
       .feed-item:hover{
       }
       .feed-item-title:hover{
       text-decoration: none;
-      color: #008F95; /*aqua*/
+      color: lightgrey;
       }
 
-      .list-overflow[overflow]{
-        background-color: #062F4F;
+      .list-overflow[overflow] {
+        position: absolute;
+        bottom: 0;
+        width: 305px;
+        background-color: #E24E42; /*papaya*/
+        border-top: 2px inset #062F4F;
         color : white;
+        font-size: 1.2em;
+        padding: .4em 0em .4em 1em;
+        font-size: 1.2em;
+        text-shadow: 2px 2px 2px black;
        }
       .footer-container {
       background-color: #008F95; /*aqua*/

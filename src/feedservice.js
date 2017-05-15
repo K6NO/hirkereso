@@ -10,7 +10,7 @@ var mockOrigoFeed  =require('../mockdata/mock_origo.json');
 var mock444Feed  =require('../mockdata/mock_444.json');
 
 
-var feedList = require('../mockdata/mock_feedlist.json').items;
+var feedPublishersList = require('../mockdata/mock_feedlist.json').items;
 
 
 var cachedFeeds = {
@@ -21,30 +21,33 @@ var cachedFeeds = {
     sztarklikk : mockIndexFeed,
     atv : mockHvgFeed,
     vs : mockOrigoFeed,
+    ps : mockOrigoFeed,
+    gs : mockOrigoFeed,
+    as : mockOrigoFeed
 };
 
 
 // Refreshes the list of feeds - used to display boxes on UI
 // Checks if feed belongs to a category
 function getFeedList(category){
-    var feedListCache = {};
+    var feedPublishersListCache = {};
     console.log('cat: ' + category);
         if(category === undefined){
             console.log('getFeedlist, category undefined' );
-            feedList.map(function (feed) {
-                var key = feed.title.toLowerCase();
-                feedListCache[key] = feed;
+            feedPublishersList.map(function (publisher) {
+                var publisherName = publisher.title.toLowerCase();
+                feedPublishersListCache[publisherName] = publisher;
             });
         } else {
-            feedList.map(function (feed) {
-                var key = feed.title.toLowerCase();
+            feedPublishersList.map(function (feed) {
+                var publisherName = feed.title.toLowerCase();
                 var feedCategory = feed.category;
                 if (feedCategory.indexOf(category) !== -1){
-                    feedListCache[key] = feed;
+                    feedPublishersListCache[publisherName] = feed;
                 }
             });
         }
-        return feedListCache;
+        return feedPublishersListCache;
 }
 
 // make a promise version of readFile
