@@ -16,8 +16,7 @@ var corsOptions = {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   let feedList = feedService.getFeedList();
-  //let feedList = feedListCols;
-  console.log(feedList);
+  //console.log(feedList);
   res.render('index', {
     feedlist1 : feedList.col1,
     feedlist2 : feedList.col2,
@@ -28,16 +27,17 @@ router.get('/', function(req, res, next) {
 /* GET categories. */
 router.get('/:category', function(req, res, next) {
   let feedList = feedService.getFeedList(req.params.category);
-    console.log(feedList);
+  console.log(feedList);
     if(Object.getOwnPropertyNames(feedList).length == 0) {
       res.redirect('/');
       console.log('No such category exists.')
     } else {
       res.render('index', {
-        feedlist : feedList
+        feedlist1 : feedList.col1,
+        feedlist2 : feedList.col2,
+        feedlist3 : feedList.col3
       });
     }
-  //});
 });
 
 /* API . */

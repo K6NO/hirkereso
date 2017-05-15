@@ -20,9 +20,9 @@ var cachedFeeds = {
     sztarklikk : mockIndexFeed,
     atv : mockHvgFeed,
     vs : mockOrigoFeed,
-    ps : mockOrigoFeed,
+    ps : mockIndexFeed,
     gs : mockOrigoFeed,
-    as : mockOrigoFeed
+    as : mockHvgFeed
 };
 
 
@@ -43,40 +43,37 @@ function getFeedList(category){
 
         feedPublishersList.map(function (publisher, index) {
             var publisherName = publisher.title.toLowerCase();
-            if(index < third){
+            if(index === 0){
                 feedPublishersListCache.col1[publisherName] = publisher;
-            } else if (index >= third && index < third*2){
+            } else if (index%third === 1){
                 feedPublishersListCache.col2[publisherName] = publisher;
-            } else {
+            } else if (index%third === 2){
                 feedPublishersListCache.col3[publisherName] = publisher;
+            } else {
+                feedPublishersListCache.col1[publisherName] = publisher;
             }
         });
     } else {
-        feedPublishersList.map(function (feed) {
-            var publisherName = feed.title.toLowerCase();
-            var feedCategory = feed.category;
-            if (feedCategory.indexOf(category) !== -1){
-                feedPublishersListCache[publisherName] = feed;
+        let filteredList = feedPublishersList.filter(function (publisher) {
+            if(publisher.category.indexOf(category) !== -1){
+                return publisher
             }
         });
-        //console.log(feedPublishersListCache);
+        let third = Math.floor(filteredList.length/3);
+        filteredList.map(function (publisher, index) {
+            var publisherName = publisher.title.toLowerCase();
+            if(index === 0){
+                feedPublishersListCache.col1[publisherName] = publisher;
+            } else if (index%third === 1){
+                feedPublishersListCache.col2[publisherName] = publisher;
+            } else if (index%third === 2){
+                feedPublishersListCache.col3[publisherName] = publisher;
+            } else {
+                feedPublishersListCache.col1[publisherName] = publisher;
+            }
+        });
     }
     return feedPublishersListCache;
-        //    feedPublishersList.map(function (publisher, index) {
-        //
-        //        var publisherName = publisher.title.toLowerCase();
-        //        feedPublishersListCache[publisherName] = publisher;
-        //    });
-        //} else {
-        //    feedPublishersList.map(function (feed) {
-        //        var publisherName = feed.title.toLowerCase();
-        //        var feedCategory = feed.category;
-        //        if (feedCategory.indexOf(category) !== -1){
-        //            feedPublishersListCache[publisherName] = feed;
-        //        }
-        //    });
-        //}
-        //return feedPublishersListCache;
 }
 
 // make a promise version of readFile

@@ -112,7 +112,7 @@ head
       .feed-list-header {
       margin: 0;
       padding: .4em 0 .4em .4em;
-      font-size: 1.4em;
+      font-size: 1em;
       letter-spacing: 5px;
       text-transform: capitalize;
       text-shadow: 2px 2px 2px black;
@@ -121,9 +121,9 @@ head
       .m1 {
       }
       .feed-item-title {
-      font-size: 1.1em;
+      font-size: .9em;
       text-decoration: none;
-      color: white;
+      color: lightgrey;
       }
       .feed-item {
       background-color: #062F4F; /*ink*/
@@ -135,20 +135,23 @@ head
       }
       .feed-item-title:hover{
       text-decoration: none;
-      color: lightgrey;
+      color: white;
       }
 
-      .list-overflow[overflow] {
+      .list-overflow[overflow]{
         position: absolute;
         bottom: 0;
         width: 305px;
-        background-color: #E24E42; /*papaya*/
-        border-top: 2px inset #062F4F;
+        background: #E24E42; /*papaya*/
+        background: linear-gradient(#062F4F 60%, white);
+        border-top: 1px #fff;
         color : white;
-        font-size: 1.2em;
+        font-size: 1em;
         padding: .4em 0em .4em 1em;
-        font-size: 1.2em;
         text-shadow: 2px 2px 2px black;
+       }
+       .list-overflow[overflow]:hover{
+       color: #E24E42;
        }
       .footer-container {
       background-color: #008F95; /*aqua*/
