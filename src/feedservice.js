@@ -26,21 +26,18 @@ var cachedFeeds = {
 };
 
 
-// Refreshes the list of feeds - used to display boxes on UI
-// Checks if feed belongs to a category
+// Refreshes the list of feeds. Returns feedPublishersListCache. Used to display boxes on UI
 function getFeedList(category){
-    //var feedPublishersListCache = {};
     var feedPublishersListCache = {
         col1 : {},
         col2 : {},
         col3 : {}
     };
 
+    // request for main page
     if(category === undefined){
-        console.log('getFeedlist, category undefined' );
-
+        // divide feeds into three columns with %3
         let third = Math.floor(feedPublishersList.length/3);
-
         feedPublishersList.map(function (publisher, index) {
             var publisherName = publisher.title.toLowerCase();
             if(index === 0){
@@ -54,12 +51,17 @@ function getFeedList(category){
             }
         });
     } else {
+        // request for category page
+        // filter publishers by categories
         let filteredList = feedPublishersList.filter(function (publisher) {
             if(publisher.category.indexOf(category) !== -1){
                 return publisher
             }
         });
+
+        // divide feeds into three columns with %3 - correct low divider for better display
         let third = Math.floor(filteredList.length/3);
+        if (third === 1) {third = 3};
         filteredList.map(function (publisher, index) {
             var publisherName = publisher.title.toLowerCase();
             if(index === 0){
@@ -98,9 +100,9 @@ function getCachedFeed(feedName){
 
 // refreshes cached feed
 function getFreshFeed(feedName){
-    return readFileASync(feedName).then(function (data) {
+    return readFileASync('uj'+feedName).then(function (data) {
         console.log('readFileASync resolves: ' + feedName);
-        cachedFeeds['index'] = data;
+        cachedFeeds[feedName] = data;
         return data;
     }).catch(function (err) {
         console.log('readFileSync rejected');
