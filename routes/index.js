@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var feedService = require('../src/feedservice.js');
+const feedListCols = require('../mockdata/mock_feedlist_cols.json');
 
 var cors = require('cors');
 var corsOptions = {
@@ -15,9 +16,12 @@ var corsOptions = {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   let feedList = feedService.getFeedList();
-  console.log(Object.keys(feedList).length);
+  //let feedList = feedListCols;
+  console.log(feedList);
   res.render('index', {
-    feedlist : feedList
+    feedlist1 : feedList.col1,
+    feedlist2 : feedList.col2,
+    feedlist3 : feedList.col3
   });
 });
 

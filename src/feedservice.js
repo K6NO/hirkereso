@@ -12,7 +12,6 @@ var mock444Feed  =require('../mockdata/mock_444.json');
 
 var feedPublishersList = require('../mockdata/mock_feedlist.json').items;
 
-
 var cachedFeeds = {
     index : mockIndexFeed,
     hvg : mockHvgFeed,
@@ -30,24 +29,54 @@ var cachedFeeds = {
 // Refreshes the list of feeds - used to display boxes on UI
 // Checks if feed belongs to a category
 function getFeedList(category){
-    var feedPublishersListCache = {};
-    console.log('cat: ' + category);
-        if(category === undefined){
-            console.log('getFeedlist, category undefined' );
-            feedPublishersList.map(function (publisher) {
-                var publisherName = publisher.title.toLowerCase();
-                feedPublishersListCache[publisherName] = publisher;
-            });
-        } else {
-            feedPublishersList.map(function (feed) {
-                var publisherName = feed.title.toLowerCase();
-                var feedCategory = feed.category;
-                if (feedCategory.indexOf(category) !== -1){
-                    feedPublishersListCache[publisherName] = feed;
-                }
-            });
-        }
-        return feedPublishersListCache;
+    //var feedPublishersListCache = {};
+    var feedPublishersListCache = {
+        col1 : {},
+        col2 : {},
+        col3 : {}
+    };
+
+    if(category === undefined){
+        console.log('getFeedlist, category undefined' );
+
+        let third = Math.floor(feedPublishersList.length/3);
+
+        feedPublishersList.map(function (publisher, index) {
+            var publisherName = publisher.title.toLowerCase();
+            if(index < third){
+                feedPublishersListCache.col1[publisherName] = publisher;
+            } else if (index >= third && index < third*2){
+                feedPublishersListCache.col2[publisherName] = publisher;
+            } else {
+                feedPublishersListCache.col3[publisherName] = publisher;
+            }
+        });
+    } else {
+        feedPublishersList.map(function (feed) {
+            var publisherName = feed.title.toLowerCase();
+            var feedCategory = feed.category;
+            if (feedCategory.indexOf(category) !== -1){
+                feedPublishersListCache[publisherName] = feed;
+            }
+        });
+        //console.log(feedPublishersListCache);
+    }
+    return feedPublishersListCache;
+        //    feedPublishersList.map(function (publisher, index) {
+        //
+        //        var publisherName = publisher.title.toLowerCase();
+        //        feedPublishersListCache[publisherName] = publisher;
+        //    });
+        //} else {
+        //    feedPublishersList.map(function (feed) {
+        //        var publisherName = feed.title.toLowerCase();
+        //        var feedCategory = feed.category;
+        //        if (feedCategory.indexOf(category) !== -1){
+        //            feedPublishersListCache[publisherName] = feed;
+        //        }
+        //    });
+        //}
+        //return feedPublishersListCache;
 }
 
 // make a promise version of readFile
