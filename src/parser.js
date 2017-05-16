@@ -6,12 +6,11 @@ const FeedParser = require('feedparser');
 const request = require('request'); // for fetching the feed
 
 // Index http://index.hu/24ora/rss/
-// Origo http://www.origo.hu/contentpartner/rss/hircentrum/origo.xml
+// Origo http://www.origo.hu/contentpartner/rss/hircentrum/origo.rss
 const options = {
-    addmeta : false,
     resume_saxerror: false
 }
-const req = request('http://index.hu/24ora/rss/');
+const req = request('http://www.origo.hu/contentpartner/rss/hircentrum/origo.rss');
 var feedparser = new FeedParser(options);
 
 
@@ -39,12 +38,16 @@ feedparser.on('readable', function () {
     var stream = this; // `this` is `feedparser`, which is a stream
     var meta = this.meta; // **NOTE** the "meta" is always available in the context of the feedparser instance
     var data = stream.read();
-    //console.log(item);
-    //console.log(meta);
-    JSON.stringify(data);
-    JSON.parse(data);
-    console.dir(data);
-    //missing [ ] in JSON
+    let exportFeed = {};
+    if(data != null) {
+        exportFeed.title = data.title;
+        exportFeed.link = data.link;
+        exportFeed.categories = data.categories;
+        exportFeed.publisher = data.meta.title;
+        exportFeed.pubDate = data.pubDate;
+        console.log(exportFeed);
+        console.log('**********');
+    }
 });
 
 

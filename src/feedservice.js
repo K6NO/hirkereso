@@ -4,14 +4,24 @@ var router = express.Router();
 var fs = require('fs');
 var cron = require('node-cron');
 
+var parserModule = require('./promiseparser.js');
+
+
+/*
+* MOCK DATA SOURCES
+*
+*/
 var mockIndexFeed = require('../mockdata/mock_index.json');
 var mockHvgFeed = require('../mockdata/mock_hvg.json');
 var mockOrigoFeed  =require('../mockdata/mock_origo.json');
 var mock444Feed  =require('../mockdata/mock_444.json');
 
-
 var feedPublishersList = require('../mockdata/mock_feedlist.json').items;
 
+/*
+* CACHED DATA
+*
+*/
 var cachedFeeds = {
     index : mockIndexFeed,
     hvg : mockHvgFeed,
@@ -110,6 +120,19 @@ function getFreshFeed(feedName){
         return err;
     })
 }
+
+// calling the parser
+function getFreshParsedFeed(feedName){
+    return parserModule.parseFeed('http://index.hu/24ora/rss/')
+        .then(function(parsedFeedsObject){
+            return parsedFeedsObject;
+        //console.log(parsedFeedsObject);
+    })
+        .catch(function (error) {
+            return err;
+        })
+}
+
 //
 //function getFreshFeedPromise(feedName){
 //    console.log('in getFreshFeedPromise');
@@ -118,5 +141,5 @@ function getFreshFeed(feedName){
 
 module.exports.getCachedFeed = getCachedFeed;
 module.exports.getFreshFeed = getFreshFeed;
-//module.exports.getFreshFeedPromise = getFreshFeedPromise;
+module.exports.getFreshParsedFeed = getFreshParsedFeed;
 module.exports.getFeedList = getFeedList;

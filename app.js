@@ -35,14 +35,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// refreshes cached feeds every 5 mins
-var task = cron.schedule('*/300 * * * * *', function () {
-  feedList.items.forEach(function (item) {
-    let feed = feedService.getFreshFeed(item.title.toLowerCase());
-      console.log(feed);
-  });
-});
-task.start();
+// TODO - move cron to separate module
+// CRON module refreshes cached feeds every 5 mins
+//var task = cron.schedule('*/300 * * * * *', function () {
+//  feedList.items.forEach(function (feed) {
+//    //console.log('5');
+//    //let feed = feedService.getFreshFeed(item.title.toLowerCase());
+//    feedService.getFreshFeed(feed.title.toLowerCase()).then(function (feedList) {
+//      //console.log(feedList.items);
+//    });
+//  });
+//});
+//task.start();
 
 //app.use(cors(corsOptions));
 app.use('/', index);

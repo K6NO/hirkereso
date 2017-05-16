@@ -49,11 +49,17 @@ router.get('/v0/api/feeds/:feedname', cors(corsOptions), function(req, res, next
   }
 });
 
+/*
+* Test route for getting new feeds in async
+* */
+
 router.get('/freshfeed/:feedname', function(req, res, next) {
-  feedService.getFreshFeed(req.params.feedname)
+  feedService.getFreshParsedFeed(req.params.feedname)
       .then(function (feed) {
+        console.log(feed);
         res.json(feed);
-      }).catch(function (err) {
+      })
+      .catch(function (err) {
     console.log('Error when resolving feed promise in router ' + err);
   });
 });
