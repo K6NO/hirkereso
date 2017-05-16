@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 var feedService = require('../src/feedservice.js');
-const feedListCols = require('../mockdata/mock_feedlist_cols.json');
 
 var cors = require('cors');
 var corsOptions = {
@@ -10,7 +9,7 @@ var corsOptions = {
   methods : 'GET, OPTIONS, POST',
   optionsSuccessStatus : 200,
   allowedHeaders : "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token",
-  exposedHeaders : "AMP-Access-Control-Allow-Source-Origin",
+  exposedHeaders : "AMP-Access-Control-Allow-Source-Origin"
 };
 
 /* GET home page. */

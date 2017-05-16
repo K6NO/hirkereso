@@ -38,6 +38,7 @@ function getFeedList(category){
     if(category === undefined){
         // divide feeds into three columns with %3
         let third = Math.floor(feedPublishersList.length/3);
+        if (third === 1) {third = 3};
         feedPublishersList.map(function (publisher, index) {
             var publisherName = publisher.title.toLowerCase();
             if(index === 0){
@@ -52,13 +53,12 @@ function getFeedList(category){
         });
     } else {
         // request for category page
-        // filter publishers by categories
+        // filter publishers by category
         let filteredList = feedPublishersList.filter(function (publisher) {
             if(publisher.category.indexOf(category) !== -1){
                 return publisher
             }
         });
-
         // divide feeds into three columns with %3 - correct low divider for better display
         let third = Math.floor(filteredList.length/3);
         if (third === 1) {third = 3};
@@ -107,15 +107,16 @@ function getFreshFeed(feedName){
     }).catch(function (err) {
         console.log('readFileSync rejected');
         console.log(err);
+        return err;
     })
 }
-
-function getFreshFeedPromise(feedName){
-    console.log('in getFreshFeedPromise');
-    return readFileASync(feedName);
-}
+//
+//function getFreshFeedPromise(feedName){
+//    console.log('in getFreshFeedPromise');
+//    return readFileASync(feedName);
+//}
 
 module.exports.getCachedFeed = getCachedFeed;
 module.exports.getFreshFeed = getFreshFeed;
-module.exports.getFreshFeedPromise = getFreshFeedPromise;
+//module.exports.getFreshFeedPromise = getFreshFeedPromise;
 module.exports.getFeedList = getFeedList;

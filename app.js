@@ -8,13 +8,17 @@ var bodyParser = require('body-parser');
 var app = express();
 var cors = require('cors');
 
+const cron = require('node-cron');
+const feedService = require('./src/feedservice.js');
+const feedList = require('./mockdata/mock_feedlist.json');
+
 //TODO check CORS headers
 var corsOptions = {
   origin : true,
   methods : 'GET',
   optionsSuccessStatus : 200,
   exposedHeaders : "AMP-Access-Control-Allow-Source-Origin",
-}
+};
 
 var index = require('./routes/index');
 
@@ -29,6 +33,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+// refreshes cached feeds every 5 mins
+var task = cron.schedule('*/300 * * * * *', function () {
+  feedList.items.forEach(function (item) {
+    let feed = feedService.getFreshFeed(item.title.toLowerCase());
+      console.log(feed);
+  });
+});
+task.start();
 
 //app.use(cors(corsOptions));
 app.use('/', index);
