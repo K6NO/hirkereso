@@ -8,9 +8,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var cors = require('cors');
 
-const cron = require('node-cron');
-const feedService = require('./src/feedservice.js');
-const feedList = require('./mockdata/mock_feedlist.json');
+const periodicRefresh = require('./src/crontask.js');
 
 //TODO check CORS headers
 var corsOptions = {
@@ -34,21 +32,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// TODO - move cron to separate module
-// CRON module refreshes cached feeds every 5 mins
-//var task = cron.schedule('*/300 * * * * *', function () {
-//  feedList.items.forEach(function (feed) {
-//    //console.log('5');
-//    //let feed = feedService.getFreshFeed(item.title.toLowerCase());
-//    feedService.getFreshFeed(feed.title.toLowerCase()).then(function (feedList) {
-//      //console.log(feedList.items);
-//    });
-//  });
-//});
-//task.start();
-
-//app.use(cors(corsOptions));
 app.use('/', index);
 
 // catch 404 and forward to error handler

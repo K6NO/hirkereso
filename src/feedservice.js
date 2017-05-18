@@ -6,7 +6,6 @@ var cron = require('node-cron');
 
 var parserModule = require('./promiseparser.js');
 
-
 /*
 * MOCK DATA SOURCES
 *
@@ -16,27 +15,41 @@ var mockHvgFeed = require('../mockdata/mock_hvg.json');
 var mockOrigoFeed  =require('../mockdata/mock_origo.json');
 var mock444Feed  =require('../mockdata/mock_444.json');
 
-var feedPublishersList = require('../mockdata/mock_feedlist.json').items;
+var feedPublishersList = require('../mockdata/mock_feedlist.json');
 
 /*
 * CACHED DATA
 *
 */
 var cachedFeeds = {
-    index : mockIndexFeed,
-    hvg : mockHvgFeed,
-    origo : mockOrigoFeed,
-    444 : mock444Feed,
-    sztarklikk : mockIndexFeed,
-    atv : mockHvgFeed,
-    vs : mockOrigoFeed,
-    ps : mockIndexFeed,
-    gs : mockOrigoFeed,
-    as : mockHvgFeed
+    //index : mockIndexFeed,
+    //hvg : mockHvgFeed,
+    //origo : mockOrigoFeed,
+    //444 : mock444Feed,
+    //sztarklikk : mockIndexFeed,
+    //atv : mockHvgFeed,
+    //vs : mockOrigoFeed,
+    //ps : mockIndexFeed,
+    //gs : mockOrigoFeed,
+    //as : mockHvgFeed
 };
 
+// CRON module refreshes cached feeds every 5 mins
+function startPeriodicRefreshOfFeeds() {
+    var task = cron.schedule('*/300 * * * * *', function () {
+        feedPublishersList.items.forEach(function (publisher) {
+            getFreshParsedFeed(publisher.rss).then(function (freshFeeds) {
+                console.log(publisher.title.toLowerCase());
+                cachedFeeds[publisher.title.toLowerCase()] = freshFeeds;
+            });
+        });
+    });
+    task.start();
+}
+startPeriodicRefreshOfFeeds();
 
-// Refreshes the list of feeds. Returns feedPublishersListCache. Used to display boxes on UI
+
+// Returns feedPublishersListCache in a 3 col structure. Used to AMP-lists on UI
 function getFeedList(category){
     var feedPublishersListCache = {
         col1 : {},
@@ -47,15 +60,16 @@ function getFeedList(category){
     // request for main page
     if(category === undefined){
         // divide feeds into three columns with %3
-        let third = Math.floor(feedPublishersList.length/3);
+        let third = Math.floor(feedPublishersList.items.length/3);
         if (third === 1) {third = 3};
-        feedPublishersList.map(function (publisher, index) {
+        feedPublishersList.items.map(function (publisher, index) {
             var publisherName = publisher.title.toLowerCase();
+            console.log(index);
             if(index === 0){
                 feedPublishersListCache.col1[publisherName] = publisher;
-            } else if (index%third === 1){
+            } else if (index%3 === 1){
                 feedPublishersListCache.col2[publisherName] = publisher;
-            } else if (index%third === 2){
+            } else if (index%3 === 2){
                 feedPublishersListCache.col3[publisherName] = publisher;
             } else {
                 feedPublishersListCache.col1[publisherName] = publisher;
@@ -64,7 +78,7 @@ function getFeedList(category){
     } else {
         // request for category page
         // filter publishers by category
-        let filteredList = feedPublishersList.filter(function (publisher) {
+        let filteredList = feedPublishersList.items.filter(function (publisher) {
             if(publisher.category.indexOf(category) !== -1){
                 return publisher
             }
@@ -76,9 +90,9 @@ function getFeedList(category){
             var publisherName = publisher.title.toLowerCase();
             if(index === 0){
                 feedPublishersListCache.col1[publisherName] = publisher;
-            } else if (index%third === 1){
+            } else if (index%3 === 1){
                 feedPublishersListCache.col2[publisherName] = publisher;
-            } else if (index%third === 2){
+            } else if (index%3 === 2){
                 feedPublishersListCache.col3[publisherName] = publisher;
             } else {
                 feedPublishersListCache.col1[publisherName] = publisher;
@@ -108,7 +122,7 @@ function getCachedFeed(feedName){
     return cachedFeeds[feedName];
 }
 
-// refreshes cached feed
+// refreshes cached feed from mock data source
 function getFreshFeed(feedName){
     return readFileASync('uj'+feedName).then(function (data) {
         console.log('readFileASync resolves: ' + feedName);
@@ -121,25 +135,19 @@ function getFreshFeed(feedName){
     })
 }
 
-// calling the parser
-function getFreshParsedFeed(feedName){
-    return parserModule.parseFeed('http://index.hu/24ora/rss/')
+// refreshes cached feed by calling the parser
+function getFreshParsedFeed(url){
+    return parserModule.parseFeed(url)
         .then(function(parsedFeedsObject){
             return parsedFeedsObject;
-        //console.log(parsedFeedsObject);
     })
         .catch(function (error) {
             return err;
         })
 }
 
-//
-//function getFreshFeedPromise(feedName){
-//    console.log('in getFreshFeedPromise');
-//    return readFileASync(feedName);
-//}
-
 module.exports.getCachedFeed = getCachedFeed;
 module.exports.getFreshFeed = getFreshFeed;
 module.exports.getFreshParsedFeed = getFreshParsedFeed;
 module.exports.getFeedList = getFeedList;
+module.exports.startPeriodicRefreshOfFeeds = startPeriodicRefreshOfFeeds;
