@@ -9,24 +9,28 @@ const request = require('request'); // for fetching the feed
 // Origo http://www.origo.hu/contentpartner/rss/hircentrum/origo.rss
 const options = {
     resume_saxerror: false
-}
-const req = request('http://www.origo.hu/contentpartner/rss/hircentrum/origo.rss');
+};
+var req = request('http://www.origo.hu/contentpartner/rss/hircentrum/origo.rss');
 var feedparser = new FeedParser(options);
 
+
+req.setHeader('user-agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36');
+req.setHeader('accept', 'text/html,application/xhtml+xml');
 
 req.on('error', function (error) {
 console.log('Error when fetching new feed from ' + req + '. ' + error)});
 
 req.on('response', function (res) {
+    var charset;
     var stream = this; // `this` is `req`, which is a stream
 
     if (res.statusCode !== 200) {
-        this.emit('error', new Error('Bad status code'));
+        return this.emit('error', new Error('Bad status code'));
     }
-    else {
-        console.log('before pipe');
-        stream.pipe(feedparser);
-    }
+    charset = getParams(res.headers['content-type'] || '');
+    console.log(charset);
+    stream.pipe(feedparser);
+
 });
 
 feedparser.on('error', function (error) {
@@ -51,10 +55,13 @@ feedparser.on('readable', function () {
 });
 
 
-// C . R . O . N
-//var task = cron.schedule('*/5 * * * * *', function () {
-//    let feed = feedService.getFreshFeed('index');
-//    console.log(feed);
-//    console.log('in 5 sec');
-//});
-//task.start();
+function getParams(str) {
+    var params = str.split(';').reduce(function (params, param) {
+        var parts = param.split('=').map(function (part) { return part.trim(); });
+        if (parts.length === 2) {
+            params[parts[0]] = parts[1];
+        }
+        return params;
+    }, {});
+    return params;
+}

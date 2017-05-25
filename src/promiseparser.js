@@ -15,7 +15,7 @@ function parseFeed(url) {
                     parsedFeed.categories = item.categories;
                     parsedFeed.pubdate = item.pubDate;
                     parsedFeedsObject.items.push(parsedFeed);
-                })
+                });
                 return parsedFeedsObject;
             })
             .then((parsedFeedsObject) => {

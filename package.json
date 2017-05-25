@@ -19,5 +19,8 @@
     "serve-favicon": "~2.4.2"
   },
   "author": "K6NO <tamas.kenessey@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "iconv": "^2.2.3"
+  }
 }

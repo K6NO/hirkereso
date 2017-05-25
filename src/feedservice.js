@@ -10,10 +10,10 @@ var parserModule = require('./promiseparser.js');
 * MOCK DATA SOURCES
 *
 */
-var mockIndexFeed = require('../mockdata/mock_index.json');
-var mockHvgFeed = require('../mockdata/mock_hvg.json');
-var mockOrigoFeed  =require('../mockdata/mock_origo.json');
-var mock444Feed  =require('../mockdata/mock_444.json');
+//var mockIndexFeed = require('../mockdata/mock_index.json');
+//var mockHvgFeed = require('../mockdata/mock_hvg.json');
+//var mockOrigoFeed  =require('../mockdata/mock_origo.json');
+//var mock444Feed  =require('../mockdata/mock_444.json');
 
 var feedPublishersList = require('../mockdata/mock_feedlist.json');
 
@@ -22,16 +22,7 @@ var feedPublishersList = require('../mockdata/mock_feedlist.json');
 *
 */
 var cachedFeeds = {
-    //index : mockIndexFeed,
-    //hvg : mockHvgFeed,
-    //origo : mockOrigoFeed,
-    //444 : mock444Feed,
-    //sztarklikk : mockIndexFeed,
-    //atv : mockHvgFeed,
-    //vs : mockOrigoFeed,
-    //ps : mockIndexFeed,
-    //gs : mockOrigoFeed,
-    //as : mockHvgFeed
+
 };
 
 // CRON module refreshes cached feeds every 5 mins
