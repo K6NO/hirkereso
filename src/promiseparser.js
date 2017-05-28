@@ -4,7 +4,6 @@ const feedparser = require('feedparser-promised');
 function parseFeed(url) {
     return new Promise (function(resolve, reject){
 
-        console.log(url);
         feedparser.parse(url)
             .then( (items) => {
                 let parsedFeedsObject = { "items" : [] };

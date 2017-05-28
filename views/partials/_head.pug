@@ -44,23 +44,27 @@ head
       }
       h1 {
       margin: 0;
-      padding: 10px;
+      padding: .3em 0 .1em .5em;
+      }
+      h1 a {
+      color: white;
+      text-decoration: none;
       text-transform: uppercase;
       text-shadow: 2px 2px 2px #000;
-      letter-spacing: 15px;
+      letter-spacing: 5px;
+      font-size: .7em;
       }
       nav ul {
       list-style: none;
-      padding: 0;
-      margin: 0 ;
+      padding: 0 0 0 .9em;
+      margin: 0;
       }
       nav li {
       text-align: center;
       display: inline-block;
-      width: 110px;
-      height: 40px;
-      line-height: 40px;
-      font-size: 1.2em;
+      width: 50px;
+      height: 20px;
+      line-height: 20px;
       }
       nav a {
       text-decoration: none;
@@ -74,27 +78,28 @@ head
       padding: 0;
       font-weight: normal;
       font-family: 'Arial', sans-serif;
-      font-size: 1em;
+      font-size: .8em;
       }
       nav a:hover {
       background-color: #E24E42 /*mustard - rgba(233, 128, 0, .5)*/
       }
-      nav a.active {
+      nav a:active {
       background-color: #E24E42; /*papaya*/
       color: #fff;
       cursor: default;
       }
       main {
       padding-top: 10px;
+      max-width: 950px;
+      margin: 0 auto;
       }
       .feed-container {
-      max-width : 950px;
-      margin: 0 auto;
       display: -webkit-flex;
       display: flex;
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
-      justify-content: space-around;
+      justify-content: left;
+      margin-left: .5em;
       }
       .col {
       width: 310px;
@@ -108,7 +113,7 @@ head
       .feed-list-header-container {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
-      background-color: #E24E42; /*papaya*/
+      background-color: #008F95 ; /*aqua or papaya #E24E42*/
       }
       .feed-list-header {
       margin: 0;
@@ -125,12 +130,12 @@ head
       .feed-item-title {
       font-size: .9em;
       text-decoration: none;
-      color: lightgrey;
+      color: #95BAC7 /*lightgrey*/;
       }
       .feed-item {
       background-color: #062F4F; /*ink*/
       border-bottom: 1px solid #4484CE; /*aqua*/
-      padding: .2em .1em .2em .4em;
+      padding: .4em .2em .4em .4em;
       border-radius: 3px;
       }
       .feed-item:hover{
@@ -176,15 +181,55 @@ head
       color: black;
       transition: .5s background-color;
       }
-      @media (min-width: 600px) {
+      @media (min-width: 640px) {
+
       footer section a {
       display: inline;
       border-left: solid 1px white;
       border-right: solid 1px white;
       }
+      .feed-container {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        margin-left: 0;
       }
-      @media (min-width: 900px) {
-      nav ul {
-      text-align: left;
+      h1 {
+      margin: 0;
+      padding: .7em 0 .3em 1.2em;
+      }
+
+      h1 a {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 2px #000;
+        letter-spacing: 5px;
+        font-size: 1em;
+        }
+      nav li {
+      text-align: center;
+      display: inline-block;
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 1.1em;
+      }
+      nav a {
+      text-decoration: none;
+      color: #fff;
+      display: block;
+      transition: .3s background-color;
+      border-radius: 3px;
+      }
+      nav a h2 {
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+      font-family: 'Arial', sans-serif;
+      font-size: 1em;
       }
       }
+

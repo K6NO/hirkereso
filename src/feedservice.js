@@ -4,16 +4,7 @@ var router = express.Router();
 var fs = require('fs');
 var cron = require('node-cron');
 
-var parserModule = require('./promiseparser.js');
-
-/*
-* MOCK DATA SOURCES
-*
-*/
-//var mockIndexFeed = require('../mockdata/mock_index.json');
-//var mockHvgFeed = require('../mockdata/mock_hvg.json');
-//var mockOrigoFeed  =require('../mockdata/mock_origo.json');
-//var mock444Feed  =require('../mockdata/mock_444.json');
+const newParserModule = require('./newparser.js');
 
 var feedPublishersList = require('../mockdata/mock_feedlist.json');
 
@@ -27,10 +18,10 @@ var cachedFeeds = {
 
 // CRON module refreshes cached feeds every 5 mins
 function startPeriodicRefreshOfFeeds() {
-    var task = cron.schedule('*/300 * * * * *', function () {
+    var task = cron.schedule('*/150 * * * * *', function () {
         feedPublishersList.items.forEach(function (publisher) {
             getFreshParsedFeed(publisher.rss).then(function (freshFeeds) {
-                console.log(publisher.title.toLowerCase());
+
                 cachedFeeds[publisher.title.toLowerCase()] = freshFeeds;
             });
         });
@@ -55,7 +46,6 @@ function getFeedList(category){
         if (third === 1) {third = 3};
         feedPublishersList.items.map(function (publisher, index) {
             var publisherName = publisher.title.toLowerCase();
-            console.log(index);
             if(index === 0){
                 feedPublishersListCache.col1[publisherName] = publisher;
             } else if (index%3 === 1){
@@ -128,13 +118,15 @@ function getFreshFeed(feedName){
 
 // refreshes cached feed by calling the parser
 function getFreshParsedFeed(url){
-    return parserModule.parseFeed(url)
-        .then(function(parsedFeedsObject){
-            return parsedFeedsObject;
-    })
-        .catch(function (error) {
-            return err;
+    return newParserModule.complexParser(url)
+        .then((parsedFeedsObject)=> {
+            let shortListedFeedsObject = {"items" : [] };
+            shortListedFeedsObject.items = parsedFeedsObject.items.splice(0,12);
+            return shortListedFeedsObject;
         })
+        .catch((err)=>{
+            return err;
+        });
 }
 
 module.exports.getCachedFeed = getCachedFeed;

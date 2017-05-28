@@ -41,4 +41,5 @@ server.enc.key
 server.key
 __TODO.rtf
 src/newparser.js
-src/parser.js
+src/testparser.js
+hirkereso.pem

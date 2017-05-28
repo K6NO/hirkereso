@@ -12,7 +12,7 @@ block content
                   amp-list(height='300', layout='fixed-height', src='/v0/api/feeds/' + feed.title)
                     template#amp-template-id(type='amp-mustache')
                       .feed-item
-                        a.feed-item-title(href='{{url}}') {{title}}
+                        a.feed-item-title(href='{{url}}', target='_blank') {{title}}
                     .list-overflow(overflow='', aria-label='Show more')
                       | ...több #{feed.title} hír
           .col
@@ -24,7 +24,7 @@ block content
                             amp-list(height='300', width='310', layout='fixed', src='/v0/api/feeds/' + feed.title)
                               template#amp-template-id(type='amp-mustache')
                                 .feed-item
-                                  a.feed-item-title(href='{{url}}') {{title}}
+                                  a.feed-item-title(href='{{url}}', target='_blank') {{title}}
                               .list-overflow(overflow='', aria-label='Show more')
                                 | ...több #{feed.title} hír
           .col
@@ -36,6 +36,6 @@ block content
                             amp-list(height='300', width='310', layout='fixed', src='/v0/api/feeds/' + feed.title)
                               template#amp-template-id(type='amp-mustache')
                                 .feed-item
-                                  a.feed-item-title(href='{{url}}') {{title}}
+                                  a.feed-item-title(href='{{url}}', target='_blank') {{title}}
                               .list-overflow(overflow='', aria-label='Show more')
                                 | ...több #{feed.title} hír
