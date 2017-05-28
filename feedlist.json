@@ -1,0 +1,210 @@
+{
+  "items": [
+    {
+      "title": "Index",
+      "rss" : "http://index.hu/24ora/rss/",
+      "url": "http://index.hu",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "HVG",
+      "rss" : "http://hvg.hu/rss",
+      "url": "http://hvg.hu",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "444",
+      "rss" : "https://444.hu/feed",
+      "url": "https://444.hu",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "Origo",
+      "rss" : "http://www.origo.hu/contentpartner/rss/hircentrum/origo.rss",
+      "url": "http://www.origo.hu//",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "Totalcar",
+      "rss" : "http://totalcar.hu/rss",
+      "url": "http://totalcar.hu/",
+      "category" : ["main", "sport"]
+    },
+    {
+      "title": "Sztárklikk",
+      "rss" : "http://sztarklikk.hu/rss",
+      "url": "http://sztarklikk.hu",
+      "category" : ["main", "bulvar"]
+    },
+    {
+      "title": "ATV",
+      "rss" : "http://www.atv.hu/all",
+      "url": "http://www.atv.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "VS",
+      "rss" : "https://vs.hu/feed",
+      "url": "https://vs.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag", "sport"]
+    },
+    {
+      "title": "Magyar Nemzet",
+      "rss" : "https://mno.hu/rss",
+      "url": "https://mno.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag", "sport"]
+
+    },
+    {
+      "title": "168óra",
+      "rss" : "http://168ora.hu/feed/",
+      "url": "http://168ora.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+
+    },
+    {
+      "title": "Hír24",
+      "rss" : "http://24.hu/feed/",
+      "url": "http://24.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag", "sport"]
+    },
+    {
+      "title": "Heti Válasz",
+      "rss" : "http://valasz.hu/rss",
+      "url": "http://valasz.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "Népszava",
+      "rss" : "http://nepszava.hu/rss",
+      "url": "http://nepszava.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "Blikk",
+      "rss" : "http://www.blikk.hu/static/rss_hirek.xml",
+      "url": "http://www.blikk.hu/",
+      "category" : ["main", "bulvar", "sport"]
+    },
+    {
+      "title": "Story",
+      "rss" : "http://www.storyonline.hu/modules/rss/mobil_feed_hirek_mind.xml",
+      "url": "http://www.storyonline.hu/",
+      "category" : ["main", "bulvar"]
+    },
+    {
+      "title": "Bors",
+      "rss" : "http://www.borsonline.hu/rss",
+      "url": "http://www.borsonline.hu/",
+      "category" : ["main", "bulvar"]
+    },
+    {
+      "title": "Nők Lapja Cafe",
+      "rss" : "http://www.nlcafe.hu/rss",
+      "url": "http://www.nlcafe.hu/",
+      "category" : ["main", "belfold", "bulvar"]
+    },
+    {
+      "title": "TotalSport",
+      "rss" : "http://totalsport.hu/hirek.rss",
+      "url": "http://totalsport.hu/",
+      "category" : ["main", "sport"]
+    },
+    {
+      "title": "Sportgéza",
+      "rss" : "http://index.hu/sport/sportgeza/rss/",
+      "url": "http://index.hu/sport/sportgeza/",
+      "category" : ["main", "sport"]
+    },
+    {
+      "title": "Alfahír",
+      "rss" : "http://alfahir.hu/rss.xml",
+      "url": "http://alfahir.hu/",
+      "category" : ["main", "belfold", "kulfold"]
+    },
+    {
+      "title": "Az én pénzem",
+      "rss" : "http://www.azenpenzem.hu/rss/",
+      "url": "http://www.azenpenzem.hu/",
+      "category" : ["main", "gazdasag", "belfold"]
+    },
+    {
+      "title": "Bien.hu",
+      "rss" : "http://www.bien.hu/rss/rss",
+      "url": "http://www.bien.hu/",
+      "category" : ["main", "bulvar", "sport"]
+    },
+    {
+      "title": "KonyhaTV",
+      "rss" : "http://konyha.tv/feed/",
+      "url": "http://konyha.tv/",
+      "category" : ["main", "bulvar"]
+    },
+    {
+      "title": "Mandiner",
+      "rss" : "http://mandiner.hu/rss",
+      "url": "http://mandiner.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "Privátbankár",
+      "rss" : "http://privatbankar.hu/rss",
+      "url": "http://privatbankar.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "Szabad Föld",
+      "rss" : "https://www.szabadfold.hu/rss",
+      "url": "https://www.szabadfold.hu/",
+      "category" : ["main", "belfold", "kulfold"]
+    },
+    {
+      "title": "Atlatszo.hu",
+      "rss" : "https://atlatszo.hu/feed/",
+      "url": "https://atlatszo.hu/",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "Vasárnapi Hírek",
+      "rss" : "https://www.vasarnapihirek.hu/rss",
+      "url": "https://www.vasarnapihirek.hu/",
+      "category" : ["main", "belfold", "kulfold", "sport", "gazdasag"]
+    },
+    {
+      "title": "Magyar Narancs",
+      "rss" : "http://magyarnarancs.hu/rss",
+      "url": "http://magyarnarancs.hu",
+      "category" : ["main", "belfold", "kulfold", "gazdasag"]
+    },
+    {
+      "title": "IT Cafe",
+      "rss" : "https://itcafe.hu/hirfolyam/anyagok/rss.xml",
+      "url": "https://itcafe.hu/index.html",
+      "category" : ["main", "tech"]
+    },
+    {
+      "title": "SG.hu",
+      "rss" : "https://sg.hu/plain/rss.xml",
+      "url": "https://sg.hu/",
+      "category" : ["main", "tech"]
+    },
+    {
+      "title": "Velvet",
+      "rss" : "http://velvet.hu/24ora/rss/",
+      "url": "http://velvet.hu/",
+      "category" : ["main", "bulvar"]
+    },
+    {
+      "title": "Sporthíradó",
+      "rss" : "https://sporthirado.hu/rss/9",
+      "url": "https://sporthirado.hu/",
+      "category" : ["main", "sport"]
+    },
+    {
+      "title": "Prohardver",
+      "rss" : "https://prohardver.hu/hirfolyam/anyagok/rss.xml",
+      "url": "https://prohardver.hu/index.html",
+      "category" : ["main", "tech"]
+    }
+  ]
+}

@@ -32,14 +32,13 @@ npm-debug.log
 # IntellJ
 .idea/
 
-notes.txt
 mockdata/
 public/mock
+public/example
 server.crt
 server.csr
 server.enc.key
 server.key
 __TODO.rtf
-src/newparser.js
-src/testparser.js
+kuka
 hirkereso.pem

@@ -6,25 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var app = express();
-var cors = require('cors');
 
-const periodicRefresh = require('./src/crontask.js');
-
-//TODO check CORS headers
-var corsOptions = {
-  origin : true,
-  methods : 'GET',
-  optionsSuccessStatus : 200,
-  exposedHeaders : "AMP-Access-Control-Allow-Source-Origin",
-};
-
-var index = require('./routes/index');
+var index = require(path.join(__dirname, 'routes', 'index.js'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());

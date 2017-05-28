@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
-var feedService = require('../src/feedservice.js');
+var feedService = require(path.join(__dirname, '..', 'src', 'feedservice.js'));
 
 var cors = require('cors');
 var corsOptions = {
@@ -12,10 +13,12 @@ var corsOptions = {
   exposedHeaders : "AMP-Access-Control-Allow-Source-Origin"
 };
 
-/* GET home page. */
+/**
+ * GET home page.
+ */
 router.get('/', function(req, res, next) {
   let feedList = feedService.getFeedList();
-  //console.log(feedList);
+  console.log(feedList.col1);
   res.render('index', {
     feedlist1 : feedList.col1,
     feedlist2 : feedList.col2,
@@ -23,25 +26,30 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* GET categories. */
+/**
+ * GET category page
+ */
 router.get('/:category', function(req, res, next) {
   let feedList = feedService.getFeedList(req.params.category);
-  console.log(feedList);
-    if(Object.getOwnPropertyNames(feedList).length == 0) {
+
+  if(isEmpty(feedList.col1)) {
       res.redirect('/');
-      console.log('No such category exists.')
-    } else {
-      res.render('index', {
-        feedlist1 : feedList.col1,
-        feedlist2 : feedList.col2,
-        feedlist3 : feedList.col3
-      });
-    }
+      console.log('Nincs ilyen kategória.')
+  } else {
+    console.log('bazzeg')
+
+    res.render('index', {
+      feedlist1 : feedList.col1,
+      feedlist2 : feedList.col2,
+      feedlist3 : feedList.col3
+    });
+  }
 });
 
-/* API . */
-/*TODO set up cors !
-* */
+/**
+ * API
+ */
+// TODO set up CORS !
 router.get('/v0/api/feeds/:feedname', cors(corsOptions), function(req, res, next) {
   if(req.headers['amp-same-origin']){
     var feed = feedService.getCachedFeed(req.params.feedname.toLowerCase());
@@ -49,20 +57,14 @@ router.get('/v0/api/feeds/:feedname', cors(corsOptions), function(req, res, next
   }
 });
 
-/*
-* Test route for getting new feeds in async
-* */
-
-router.get('/freshfeed/:feedname', function(req, res, next) {
-  feedService.getFreshParsedFeed(req.params.feedname)
-      .then(function (feed) {
-        console.log(feed);
-        res.json(feed);
-      })
-      .catch(function (err) {
-    console.log('Error when resolving feed promise in router ' + err);
-  });
-});
+/**
+ * Helper method checking if an object is empty
+ * @param obj
+ * @returns {boolean}
+ */
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
 
 module.exports = router;
 

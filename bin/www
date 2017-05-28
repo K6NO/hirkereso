@@ -1,10 +1,11 @@
 #!/usr/bin/env node
+var path = require('path');
 
 /**
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require(path.join(__dirname, '..', 'app.js'));
 var debug = require('debug')('hirkereso:server');
 var http = require('http');
 var https = require('https');
@@ -21,7 +22,6 @@ var credentials = {
 
 var port = normalizePort(process.env.PORT || '3000');
 var httpsPort = normalizePort(process.env.PORT || '3443');
-//app.set('port', port);
 
 /**
  * Create HTTP & HTTPS servers.
