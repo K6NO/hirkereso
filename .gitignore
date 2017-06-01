@@ -42,3 +42,7 @@ server.key
 __TODO.rtf
 kuka
 hirkereso.pem
+.gitignore
+Dockerfile
+public/.DS_Store
+.DS_Store
