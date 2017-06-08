@@ -35,10 +35,10 @@ npm-debug.log
 mockdata/
 public/mock
 public/example
-server.crt
-server.csr
-server.enc.key
-server.key
+#server.crt
+#server.csr
+#server.enc.key
+#server.key
 __TODO.rtf
 kuka
 hirkereso.pem
