@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --inspect ./bin/www"
+    "start": "node ./bin/www",
+    "devstart": "nodemon --inspect ./bin/www"
+  },
+  "engines" : {
+    "node": "6.3.1"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
