@@ -28,7 +28,6 @@ head
       /* any custom style goes here */
       body {
       font-family: 'roboto', sans-serif;
-      color: black;
       }
       .header-container{
       background-color: #062F4F; /*ink*/
@@ -82,9 +81,8 @@ head
       background-color: #E24E42 /*mustard - rgba(233, 128, 0, .5)*/
       }
       nav a:active {
-      background-color: #E24E42; /*papaya*/
+      background-color: #fff; /*papaya*/
       color: #fff;
-      cursor: default;
       }
       main {
       padding-top: 10px;
@@ -107,7 +105,11 @@ head
       margin-bottom: 10px;
       border-radius: 5px;
       }
-
+      .feed-list-ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      }
       .feed-list-header-container {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
@@ -123,13 +125,6 @@ head
       text-shadow: 2px 2px 2px black;
       border-bottom: 1px solid black;
       }
-      .m1 {
-      }
-      .feed-item-title {
-      font-size: .9em;
-      text-decoration: none;
-      color: #95BAC7 /*lightgrey*/;
-      }
       .feed-item {
       background-color: #062F4F; /*ink*/
       border-bottom: 1px solid #4484CE; /*aqua*/
@@ -138,11 +133,15 @@ head
       }
       .feed-item:hover{
       }
+      .feed-item-title {
+      font-size: .9em;
+      text-decoration: none;
+      color: #95BAC7 /*lightgrey*/;
+      }
       .feed-item-title:hover{
       text-decoration: none;
       color: white;
       }
-
       .list-overflow[overflow]{
         position: absolute;
         bottom: 0;
@@ -220,6 +219,13 @@ head
       color: #fff;
       display: block;
       transition: .3s background-color;
+      }
+      nav a:hover {
+      background-color: #E24E42 /*mustard - rgba(233, 128, 0, .5)*/
+      }
+      nav a:active {
+      background-color: #fff; /*papaya*/
+      color: #fff;
       }
       nav a h2 {
       margin: 0;

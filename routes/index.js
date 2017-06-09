@@ -16,30 +16,32 @@ var corsOptions = {
 /**
  * GET home page.
  */
-router.get('/', function(req, res, next) {
-  let feedList = feedService.getFeedList();
-  console.log(feedList.col1);
+router.get('/', function(req, res) {
+  let publisherList = feedService.getPublisherList();
+  console.log(publisherList.col1);
   res.render('index', {
-    feedlist1 : feedList.col1,
-    feedlist2 : feedList.col2,
-    feedlist3 : feedList.col3
+    publisherList1 : publisherList.col1,
+    publisherList2 : publisherList.col2,
+    publisherList3 : publisherList.col3,
+    category: undefined
   });
 });
 
 /**
  * GET category page
  */
-router.get('/:category', function(req, res, next) {
-  let feedList = feedService.getFeedList(req.params.category);
+router.get('/:category', function(req, res) {
+  let publisherList = feedService.getPublisherList(req.params.category);
 
-  if(isEmpty(feedList.col1)) {
+  if(isEmpty(publisherList.col1)) {
       res.redirect('/');
       console.log('No such category.')
   } else {
     res.render('index', {
-      feedlist1 : feedList.col1,
-      feedlist2 : feedList.col2,
-      feedlist3 : feedList.col3
+      publisherList1 : publisherList.col1,
+      publisherList2 : publisherList.col2,
+      publisherList3 : publisherList.col3,
+      category: req.params.category
     });
   }
 });

@@ -7,20 +7,20 @@
             nav
               ul
                 li.category
-                  a(href='/')
+                  a(class=!category ? 'active' : undefined, href='/')
                     h2 Főoldal
                 li.category
-                  a(href='/belfold')
+                  a(class=category ==='belfold' ? 'active' : undefined, href='/belfold')
                     h2 Belföld
                 li.category
-                  a(href='kulfold')
+                  a(class=category ==='kulfold' ? 'active' : undefined, href='/kulfold')
                     h2 Külföld
                 li.category
-                  a(href='bulvar')
+                  a(class=category ==='bulvar' ? 'active' : undefined, href='/bulvar')
                     h2 Bulvár
                 li.category
-                  a(href='sport')
+                  a(class=category ==='sport' ? 'active' : undefined, href='/sport')
                     h2 Sport
                 li.category
-                  a(href='tech')
+                  a(class=category ==='tech' ? 'active' : undefined, href='/tech')
                     h2 Tech

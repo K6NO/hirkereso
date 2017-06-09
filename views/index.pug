@@ -4,38 +4,32 @@ block content
     main
         .feed-container
           .col
-            each feed in feedlist1
+            each publisher in publisherList1
               .feed-wrapper
                 .feed-list-header-container
-                  h3.feed-list-header #{feed.title}
+                  h3.feed-list-header #{publisher.title}
                 .feed-list
-                  amp-list(height='300', layout='fixed-height', src='/v0/api/feeds/' + feed.title)
-                    template#amp-template-id(type='amp-mustache')
-                      .feed-item
-                        a.feed-item-title(href='{{url}}', target='_blank') {{title}}
-                    .list-overflow(overflow='', aria-label='Show more')
-                      | ...több #{feed.title} hír
+                  ul.feed-list-ul
+                    each feed in publisher.feeds.items
+                      li.feed-item
+                        a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
           .col
-                      each feed in feedlist2
-                        .feed-wrapper
-                          .feed-list-header-container
-                            h3.feed-list-header #{feed.title}
-                          .feed-list
-                            amp-list(height='300', width='310', layout='fixed', src='/v0/api/feeds/' + feed.title)
-                              template#amp-template-id(type='amp-mustache')
-                                .feed-item
-                                  a.feed-item-title(href='{{url}}', target='_blank') {{title}}
-                              .list-overflow(overflow='', aria-label='Show more')
-                                | ...több #{feed.title} hír
+            each publisher in publisherList2
+              .feed-wrapper
+                .feed-list-header-container
+                  h3.feed-list-header #{publisher.title}
+                .feed-list
+                  ul.feed-list-ul
+                    each feed in publisher.feeds.items
+                      li.feed-item
+                        a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
           .col
-                      each feed in feedlist3
-                        .feed-wrapper
-                          .feed-list-header-container
-                            h3.feed-list-header #{feed.title}
-                          .feed-list
-                            amp-list(height='300', width='310', layout='fixed', src='/v0/api/feeds/' + feed.title)
-                              template#amp-template-id(type='amp-mustache')
-                                .feed-item
-                                  a.feed-item-title(href='{{url}}', target='_blank') {{title}}
-                              .list-overflow(overflow='', aria-label='Show more')
-                                | ...több #{feed.title} hír
+            each publisher in publisherList3
+              .feed-wrapper
+                .feed-list-header-container
+                  h3.feed-list-header #{publisher.title}
+                .feed-list
+                  ul.feed-list-ul
+                    each feed in publisher.feeds.items
+                      li.feed-item
+                        a.feed-item-title(href=feed.url, target='_blank') #{feed.title}

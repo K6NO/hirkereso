@@ -15,7 +15,7 @@ var cachedFeeds = { };
  * @param categpry
  * @returns {feedPublishersListCache}
  */
-function getFeedList(category){
+function getPublisherList(category){
     var feedPublishersListCache = {
         col1 : {},
         col2 : {},
@@ -27,13 +27,27 @@ function getFeedList(category){
         // divide feeds into three columns with %3
 
         feedPublishersList.items.map(function (publisher, index) {
+
             var publisherName = publisher.title.toLowerCase();
             if(index%3 === 0){
+
+                // get latest feeds for given publisher from cache
+                let feeds = getCachedFeed(publisherName);
+
+                // add publisher info
                 feedPublishersListCache.col1[publisherName] = publisher;
+
+                // add feeds from the publisher
+                feedPublishersListCache.col1[publisherName]['feeds'] = feeds;
             } else if (index%3 === 1){
+                let feeds = getCachedFeed(publisherName);
                 feedPublishersListCache.col2[publisherName] = publisher;
+                feedPublishersListCache.col2[publisherName]['feeds'] = feeds;
+
             } else if (index%3 === 2){
+                let feeds = getCachedFeed(publisherName);
                 feedPublishersListCache.col3[publisherName] = publisher;
+                feedPublishersListCache.col3[publisherName]['feeds'] = feeds;
             }
         });
     } else {
@@ -49,11 +63,17 @@ function getFeedList(category){
         filteredList.map(function (publisher, index) {
             var publisherName = publisher.title.toLowerCase();
             if(index%3 === 0){
+                let feeds = getCachedFeed(publisherName);
                 feedPublishersListCache.col1[publisherName] = publisher;
+                feedPublishersListCache.col1[publisherName]['feeds'] = feeds;
             } else if (index%3 === 1){
+                let feeds = getCachedFeed(publisherName);
                 feedPublishersListCache.col2[publisherName] = publisher;
+                feedPublishersListCache.col2[publisherName]['feeds'] = feeds;
             } else if (index%3 === 2){
+                let feeds = getCachedFeed(publisherName);
                 feedPublishersListCache.col3[publisherName] = publisher;
+                feedPublishersListCache.col3[publisherName]['feeds'] = feeds;
             }
         });
     }
@@ -64,7 +84,7 @@ function getFeedList(category){
  * CRON task refreshes cached feeds every 5 mins
  */
 function startPeriodicRefreshOfFeeds() {
-    var task = cron.schedule('*/300 * * * * *', function () {
+    var task = cron.schedule('*/30 * * * * *', function () {
         feedPublishersList.items.forEach(function (publisher) {
             getFreshParsedFeed(publisher.rss).then(function (freshFeeds) {
 
@@ -105,5 +125,5 @@ function getFreshParsedFeed(url){
 
 module.exports.getCachedFeed = getCachedFeed;
 module.exports.getFreshParsedFeed = getFreshParsedFeed;
-module.exports.getFeedList = getFeedList;
+module.exports.getPublisherList = getPublisherList;
 module.exports.startPeriodicRefreshOfFeeds = startPeriodicRefreshOfFeeds;
