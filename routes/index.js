@@ -18,7 +18,6 @@ var corsOptions = {
  */
 router.get('/', function(req, res) {
   let publisherList = feedService.getPublisherList();
-  console.log(publisherList.col1);
   res.render('index', {
     publisherList1 : publisherList.col1,
     publisherList2 : publisherList.col2,

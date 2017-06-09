@@ -87,8 +87,8 @@ function startPeriodicRefreshOfFeeds() {
     var task = cron.schedule('*/30 * * * * *', function () {
         feedPublishersList.items.forEach(function (publisher) {
             getFreshParsedFeed(publisher.rss).then(function (freshFeeds) {
-
                 cachedFeeds[publisher.title.toLowerCase()] = freshFeeds;
+                console.log('cache updated');
             });
         });
     });

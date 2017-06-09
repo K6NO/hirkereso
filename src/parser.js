@@ -53,7 +53,6 @@ function maybeTranslate (res, charset) {
     if (!iconv && charset && !/utf-*8/i.test(charset)) {
         try {
             iconv = new Iconv(charset, 'utf-8');
-            console.log('Converting from charset %s to utf-8', charset);
             iconv.on('error', done);
             // If we're using iconv, stream will be the output of iconv
             // otherwise it will remain the output of request
