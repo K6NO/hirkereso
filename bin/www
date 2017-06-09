@@ -12,8 +12,8 @@ var https = require('https');
 var fs = require('fs');
 
 var credentials = {
-  key : fs.readFileSync('server.key'),
-  cert : fs.readFileSync('server.crt')
+  key : fs.readFileSync('./keys/server.key'),
+  cert : fs.readFileSync('./keys/server.crt')
 };
 
 /**
