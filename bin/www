@@ -11,10 +11,10 @@ var http = require('http');
 var https = require('https');
 var fs = require('fs');
 
-var credentials = {
-  key : fs.readFileSync('./keys/server.key'),
-  cert : fs.readFileSync('./keys/server.crt')
-};
+//var credentials = {
+//  key : fs.readFileSync('./keys/server.key'),
+//  cert : fs.readFileSync('./keys/server.crt')
+//};
 
 /**
  * Get port from environment and store in Express.
