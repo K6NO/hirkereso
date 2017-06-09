@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var compression = require('compression');
 
 var app = express();
 
@@ -18,8 +19,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// static server
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(compression({level: 1}));
+
+//router
 app.use('/', index);
 
 // catch 404 and forward to error handler
