@@ -1,3 +1,4 @@
+'use strict';
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,9 +7,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compression = require('compression');
 
-var app = express();
+const app = express();
 
-var index = require(path.join(__dirname, 'routes', 'index.js'));
+const index = require(path.join(__dirname, 'routes', 'index.js'));
+
+const feedService = require(path.join(__dirname, 'src', 'feedservice.js'));
 
 // remove X-Powered-By header 
 app.disable('x-powered-by');
@@ -26,6 +29,8 @@ app.use(cookieParser());
 // static server
 app.use(express.static(path.join(__dirname, 'public')));
 
+// launch cron task
+feedService.startPeriodicRefreshOfFeeds();
 
 //GZIP compression
 app.use(compression({level: 1}));

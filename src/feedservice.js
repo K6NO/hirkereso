@@ -9,7 +9,6 @@ var feedPublishersList = require('../feedlist.json');
 // CACHED DATA
 var cachedFeeds = { };
 
-
 /**
  * Returns feedPublishersListCache in a 3 col structure. Used to create AMP-lists on UI
  * @param categpry
@@ -94,8 +93,6 @@ function startPeriodicRefreshOfFeeds() {
     });
     task.start();
 }
-startPeriodicRefreshOfFeeds();
-
 
 /** returns cached feeds
  * @param feedName
