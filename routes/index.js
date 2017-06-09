@@ -51,7 +51,7 @@ router.get('/:category', function(req, res, next) {
 router.get('/v0/api/feeds/:feedname', cors(corsOptions), function(req, res, next) {
   if(req.headers['amp-same-origin']){
     var feed = feedService.getCachedFeed(req.params.feedname.toLowerCase());
-    res.setHeader("Cache-Control", "public, max-age=600, stale-while-revalidate=2592000");
+    res.setHeader("Cache-Control", "public, max-age=86400, stale-while-revalidate=2592000");
     res.json(feed);
   }
 });

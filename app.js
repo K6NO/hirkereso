@@ -10,6 +10,9 @@ var app = express();
 
 var index = require(path.join(__dirname, 'routes', 'index.js'));
 
+// remove X-Powered-By header 
+app.disable('x-powered-by');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -23,6 +26,8 @@ app.use(cookieParser());
 // static server
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//GZIP compression
 app.use(compression({level: 1}));
 
 //router
