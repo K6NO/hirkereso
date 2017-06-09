@@ -10,9 +10,10 @@ block content
                   h3.feed-list-header #{publisher.title}
                 .feed-list
                   ul.feed-list-ul
-                    each feed in publisher.feeds.items
-                      li.feed-item
-                        a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
+                    if publisher.feeds
+                      each feed in publisher.feeds.items
+                        li.feed-item
+                          a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
           .col
             each publisher in publisherList2
               .feed-wrapper
@@ -20,9 +21,10 @@ block content
                   h3.feed-list-header #{publisher.title}
                 .feed-list
                   ul.feed-list-ul
-                    each feed in publisher.feeds.items
-                      li.feed-item
-                        a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
+                    if publisher.feeds
+                      each feed in publisher.feeds.items
+                        li.feed-item
+                          a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
           .col
             each publisher in publisherList3
               .feed-wrapper
@@ -30,6 +32,7 @@ block content
                   h3.feed-list-header #{publisher.title}
                 .feed-list
                   ul.feed-list-ul
-                    each feed in publisher.feeds.items
-                      li.feed-item
-                        a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
+                    if publisher.feeds
+                      each feed in publisher.feeds.items
+                        li.feed-item
+                          a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
