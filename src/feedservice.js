@@ -57,7 +57,6 @@ function getFeedList(category){
             }
         });
     }
-    console.log(feedPublishersListCache);
     return feedPublishersListCache;
 }
 
