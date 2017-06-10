@@ -22,6 +22,7 @@ function complexParser(url) {
             // throw error if response is not 200 except with totalcar (returns feed with 404)
             if (res.statusCode != 200 && url === 'http://totalcar.hu/rss/podcast') return this.emit('error', new Error('Bad status code'));
             var charset = getParams(res.headers['content-type'] || '').charset;
+            // convert charset manually
             if (url.indexOf('origo.hu') !== -1 || url.indexOf('storyonline.hu') !== -1) charset = 'iso-8859-2';
             res = maybeTranslate(res, charset);
 
