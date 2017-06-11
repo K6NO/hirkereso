@@ -8,7 +8,7 @@
               ul
                 li.category
                   a(class=!category ? 'active' : undefined, href='/')
-                    h2 Főoldal
+                    h2 Összes
                 li.category
                   a(class=category ==='belfold' ? 'active' : undefined, href='/belfold')
                     h2 Belföld
@@ -24,3 +24,9 @@
                 li.category
                   a(class=category ==='tech' ? 'active' : undefined, href='/tech')
                     h2 Tech
+          .col-row
+            ul
+              li
+                a(href='#col2') Ugrás középre
+              li
+                a(href='#col3') Ugrás az aljára

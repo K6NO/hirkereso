@@ -3,7 +3,7 @@ extends layout
 block content
     main
         .feed-container
-          .col
+          .col#col1
             each publisher in publisherList1
               .feed-wrapper
                 .feed-list-header-container
@@ -14,7 +14,7 @@ block content
                       each feed in publisher.feeds.items
                         li.feed-item
                           a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
-          .col
+          .col#col2
             each publisher in publisherList2
               .feed-wrapper
                 .feed-list-header-container
@@ -25,7 +25,7 @@ block content
                       each feed in publisher.feeds.items
                         li.feed-item
                           a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
-          .col
+          .col#col3
             each publisher in publisherList3
               .feed-wrapper
                 .feed-list-header-container
