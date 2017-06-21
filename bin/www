@@ -11,10 +11,6 @@ var http = require('http');
 var https = require('https');
 var fs = require('fs');
 
-//var credentials = {
-//  key : fs.readFileSync('./keys/server.key'),
-//  cert : fs.readFileSync('./keys/server.crt')
-//};
 
 /**
  * Get port from environment and store in Express.
@@ -27,7 +23,10 @@ var port = normalizePort(process.env.PORT || '3000');
  * Create HTTP & HTTPS servers.
  */
 
-//var credentials = {key: privateKey, cert: certificate};
+//var credentials = {
+//  key : fs.readFileSync('./keys/server.key'),
+//  cert : fs.readFileSync('./keys/server.crt')
+//};
 
 var httpServer = http.createServer(app);
 //var httpsServer = https.createServer(credentials, app);

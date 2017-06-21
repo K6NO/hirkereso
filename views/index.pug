@@ -10,7 +10,7 @@ block content
                   h3.feed-list-header #{publisher.title}
                 .feed-list
                   ul.feed-list-ul
-                    if publisher.feeds
+                    if (publisher.feeds.items != undefined)
                       each feed in publisher.feeds.items
                         li.feed-item
                           a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
@@ -21,7 +21,7 @@ block content
                   h3.feed-list-header #{publisher.title}
                 .feed-list
                   ul.feed-list-ul
-                    if publisher.feeds
+                    if (publisher.feeds.items != undefined)
                       each feed in publisher.feeds.items
                         li.feed-item
                           a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
@@ -32,7 +32,7 @@ block content
                   h3.feed-list-header #{publisher.title}
                 .feed-list
                   ul.feed-list-ul
-                    if publisher.feeds
+                    if (publisher.feeds.items != undefined)
                       each feed in publisher.feeds.items
                         li.feed-item
                           a.feed-item-title(href=feed.url, target='_blank') #{feed.title}
