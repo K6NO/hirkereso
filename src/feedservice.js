@@ -109,6 +109,7 @@ function getPublisherList(category){
             }
         });
     }
+    console.log(feedPublishersListCache);
     return feedPublishersListCache;
 }
 
