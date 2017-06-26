@@ -1,15 +1,15 @@
 #!/usr/bin/env node
+'use strict';
 var path = require('path');
 
 /**
  * Module dependencies.
  */
 
-var app = require(path.join(__dirname, '..', 'app.js'));
-var debug = require('debug')('hirkereso:server');
-var http = require('http');
-var https = require('https');
-var fs = require('fs');
+const app = require(path.join(__dirname, '..', 'app.js')),
+      debug = require('debug')('hirkereso:server'),
+      http = require('http'),
+      fs = require('fs');
 
 
 /**
@@ -17,19 +17,13 @@ var fs = require('fs');
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-//var httpsPort = normalizePort(process.env.PORT || '3443');
 
 /**
  * Create HTTP & HTTPS servers.
  */
 
-//var credentials = {
-//  key : fs.readFileSync('./keys/server.key'),
-//  cert : fs.readFileSync('./keys/server.crt')
-//};
 
 var httpServer = http.createServer(app);
-//var httpsServer = https.createServer(credentials, app);
 
 
 /**
@@ -37,13 +31,9 @@ var httpServer = http.createServer(app);
  */
 
 httpServer.listen(port);
-//httpsServer.listen(httpsPort);
 
 httpServer.on('error', onError);
 httpServer.on('listening', onListening);
-
-//httpsServer.on('error', onError);
-//httpsServer.on('listening', onListeningHTTPS);
 
 
 /**
@@ -109,11 +99,3 @@ function onListening() {
 /**
  * Event listener for HTTPS server "listening" event.
  */
-
-//function onListeningHTTPS() {
-//  var addr = httpsServer.address();
-//  var bind = typeof addr === 'string'
-//      ? 'pipe ' + addr
-//      : 'port ' + addr.port;
-//  debug('Listening on ' + bind);
-//}
