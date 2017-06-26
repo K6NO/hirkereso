@@ -118,7 +118,7 @@ function getPublisherList(category){
  * CRON task refreshes cached feeds every 5 mins
  */
 function startPeriodicRefreshOfFeeds() {
-    var task = cron.schedule('*/30 * * * * *', function () {
+    var task = cron.schedule('*/300 * * * * *', function () {
         feedPublishersList.items.forEach(function (publisher) {
             getFreshParsedFeed(publisher.rss).then(function (freshFeeds) {
                 cachedFeeds[publisher.title.toLowerCase()] = freshFeeds;
