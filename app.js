@@ -29,6 +29,16 @@ app.use(cookieParser());
 // static server
 app.use(express.static(path.join(__dirname, 'public')));
 
+// robots.txt
+app.use(function (req, res, next) {
+  if ('/robots.txt' == req.url) {
+    res.type('text/plain')
+    res.send("User-agent: *\nAllow: /");
+  } else {
+    next();
+  }
+});
+
 // launch cron task
 feedService.startPeriodicRefreshOfFeeds();
 
