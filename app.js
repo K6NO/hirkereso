@@ -1,13 +1,28 @@
 'use strict';
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var compression = require('compression');
+const express = require('express'),
+      path = require('path'),
+      favicon = require('serve-favicon'),
+      logger = require('morgan'),
+      cookieParser = require('cookie-parser'),
+      bodyParser = require('body-parser'),
+      compression = require('compression'),
+      sitemap = require('express-sitemap');
 
 const app = express();
+
+sitemap({
+  map: {
+    '/': ['get'],
+    '/belfold': ['get'],
+    '/kulfold': ['get'],
+    '/sport': ['get'],
+    '/bulvar': ['get'],
+    '/tech': ['get']
+  },
+  http: "https",
+  url: "hirekegyben.hu",
+  sitemapSubmission : "sitemap"
+}).XMLtoFile();
 
 const index = require(path.join(__dirname, 'routes', 'index.js'));
 
